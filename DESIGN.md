@@ -16,19 +16,19 @@ colors:
   s-green:    "oklch(48% 0.13 155)"
 typography:
   display:
-    fontFamily: "STSong, 'Songti SC', Georgia, serif"
+    fontFamily: "'Kaiti SC', STKaiti, 'KaiTi', serif"
     fontSize: "2.5rem"
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: "-0.015em"
   headline:
-    fontFamily: "STSong, 'Songti SC', Georgia, serif"
+    fontFamily: "'Kaiti SC', STKaiti, 'KaiTi', serif"
     fontSize: "1.45rem"
     fontWeight: 600
     lineHeight: 1.3
     letterSpacing: "-0.01em"
   subheading:
-    fontFamily: "STSong, 'Songti SC', Georgia, serif"
+    fontFamily: "'Kaiti SC', STKaiti, 'KaiTi', serif"
     fontSize: "1rem"
     fontWeight: 700
     lineHeight: 1.4
@@ -58,7 +58,7 @@ Every slide is a precision readout — not a page of content, but a calibrated d
 
 One committed color — a deep crimson, taken directly from the 九桥同步 logo's brushstroke — carries 30–60% of every slide. It is not a background wash, nor a thin accent stripe; it is a structural element used for section header bands, table headers, callout panels, and numbered anchors. The ground is warm-tinted near-white. The result is authoritative without being cold: the brand's calligraphic identity scaled up to fill a meeting room.
 
-Typography pairs STSong (Chinese serif) for display headlines with a clean humanist sans for body text. The pairing conveys institutional weight at the headline level and maximal legibility at body level — especially critical for dense Chinese technical content.
+Typography pairs Kaiti SC (Chinese calligraphic regular script) for display headlines with a clean humanist sans for body text. The pairing connects to the 九桥同步 logo's brushstroke identity at heading scale, while PingFang SC provides maximal legibility at body level — especially critical for dense Chinese technical content.
 
 This design explicitly rejects: SaaS startup aesthetics (no decorative gradients, no rounded pill buttons, no pastel panel backgrounds); dry government-report flatness (no black-on-white walls of text with zero visual hierarchy); generic Western enterprise grids (no IBM/SAP navy-and-gray). And above all: no **unstructured pavement of information** — the primary failure mode to design against. Every slide has a clear primary point, clear secondary support, and clear tertiary detail. If something doesn't fit that hierarchy, it is cut.
 
@@ -98,18 +98,18 @@ A **Committed** palette: one saturated engineering-blue anchor plus a warm near-
 
 ## 3. Typography
 
-**Display / Heading Font:** STSong (宋体) — Chinese serif, formal institutional weight. Applied explicitly to `h1`, `h2`, `h3` via CSS `font-family` override. This family carries the crimson h1 band and all subheadings. At display sizes, the single-weight limitation is acceptable; the crisp serif stroke and narrow letterfit read as authority, not limitation. Fallback: `'Songti SC', Georgia, serif`.
+**Display / Heading Font:** Kaiti SC (楷体-简) — Chinese calligraphic regular script (楷书). Applied explicitly to `h1`, `h2`, `h3` via CSS `font-family` override. Brushstroke-derived, used on official Chinese seals, certificates, and institutional proclamations. Three weight variants on macOS (Regular, Bold, Black) enable genuine weight hierarchy. On the crimson band, Kaiti's expressive stroke contrast reads more clearly at projection distance than Song Ti's thin horizontals. Fallback: `STKaiti, 'KaiTi', serif`.
 
 **Body Font:** PingFang SC (苹方-简) — a humanist sans with 6 weight variants (Ultralight → Semibold). Set as `fonts.sans` in the Slidev frontmatter. Handles all body text, list items, table cells, labels, and UI annotations. The weight range enables genuine hierarchy within body content (Regular for body, Semibold for inline emphasis). Latin glyph quality is strong — English technical terms (Oracle, MySQL, PostgreSQL, Java, C++) render with correct proportions alongside Chinese. Fallback: `system-ui, sans-serif`.
 
 **Mono Font:** Fira Code — for all code samples, database identifiers, technical strings, and version numbers. Configured via `fonts.mono: 'Fira Code'`.
 
-**Character:** The pairing anchors headlines in the historical weight of printed Chinese editorial (STSong), while keeping body text maximally legible and weight-rich (PingFang SC). The visual contrast between the two scripts' texture — serif strokes at the heading, clean humanist loops in the body — signals "official seal above, precision instrument below," which is precisely the "Instrument Panel" intent.
+**Character:** The pairing anchors headlines in the calligraphic brushstroke tradition of Chinese regular script (Kaiti SC), while keeping body text maximally legible and weight-rich (PingFang SC). The visual contrast between the two scripts' texture — brush-drawn strokes at the heading, clean humanist loops in the body — signals "official seal above, precision instrument below," which is precisely the "Instrument Panel" intent.
 
 ### Hierarchy
-- **Display** (STSong, weight 700, 2.5rem, tight line-height): Slide main title only (title slide). One per deck. The identity apex.
-- **Headline** (STSong, weight 600, 1.45rem, in brand crimson band): Section h1 header band. One per content slide.
-- **Subheading** (STSong, weight 600–700, ~1rem): Section subheadings (h2, h3). One or two per slide.
+- **Display** (Kaiti SC, weight 700, 2.5rem, tight line-height): Slide main title only (title slide). One per deck. The identity apex.
+- **Headline** (Kaiti SC, weight 600, 1.45rem, in brand crimson band): Section h1 header band. One per content slide.
+- **Subheading** (Kaiti SC, weight 600–700, ~1rem): Section subheadings (h2, h3). One or two per slide.
 - **Body** (PingFang SC, weight 400, 0.88–0.92rem): Primary explanatory text. Dense technical lists. Max ~40–50 characters per line on a slide.
 - **Label** (PingFang SC, weight 400, 0.78–0.85rem): Supporting annotations, data labels, footnote-level context. Minimum size at projection distance.
 - **Mono** (Fira Code, weight 400, 0.88rem): All code snippets, database names, configuration values, CLI commands, version strings.
@@ -158,7 +158,7 @@ Inline or block-level display of configuration values, SQL, identifiers, and ver
 - **Do** use Engineering Slate Blue as a structural element — full-width bands, table headers, key callout panels. It earns its 30–60% coverage through area, not repetition.
 - **Do** ensure every slide has a single apex: one piece of information that is visually and hierarchically first. Body text, tables, and diagrams all support it; they never compete with it.
 - **Do** calibrate all font sizes for projection distance. A font that looks fine on a laptop screen may be illegible at 4 meters. Minimum effective body text is ~18–20px at slide resolution.
-- **Do** use Chinese-first typesetting: set STSong and Noto Sans SC as the primary fonts, Latin as fallback. Chinese glyphs are the primary script.
+- **Do** use Chinese-first typesetting: set Kaiti SC and PingFang SC as the primary fonts, Latin as fallback. Chinese glyphs are the primary script.
 - **Do** use status colors (green/amber/red) exclusively for functional indicators: sync state, alert severity, comparison result. Never use them as brand accents or decorative highlights.
 - **Do** keep all borders to 1px. Table cell dividers, container boundaries, diagram frames: all 1px in Divider color.
 - **Do** let white space do structural work. Slide sections separated by space read as structured. Sections crammed together read as "unstructured pavement of information."

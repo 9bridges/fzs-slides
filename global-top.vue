@@ -28,10 +28,11 @@
   --s-green:    oklch(48% 0.13 155);
 }
 
-/* Heading family: STSong for institutional authority at display sizes.
+/* Heading family: Kaiti SC (楷体-简) for institutional calligraphic authority.
+   Brushstroke-derived regular script — same calligraphic family as the 九桥同步 logo.
    PingFang SC (fonts.sans) handles body, tables, and labels. */
 h1, h2, h3 {
-  font-family: 'STSong', 'Songti SC', Georgia, serif;
+  font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
 }
 
 /* Slide ground */
@@ -47,7 +48,7 @@ h1, h2, h3 {
   color: oklch(97% 0.005 30);
   padding: 0.75rem 3.5rem;
   margin: -2.5rem -3.5rem 1.5rem;
-  font-family: 'STSong', 'Songti SC', Georgia, serif;
+  font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
   font-size: 1.45rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -65,7 +66,7 @@ h1, h2, h3 {
   background-color: var(--brand);
   color: oklch(97% 0.005 30);
   padding: 0.45rem 0.85rem;
-  font-family: 'STSong', 'Songti SC', Georgia, serif;
+  font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
   font-weight: 600;
   text-align: left;
 }
