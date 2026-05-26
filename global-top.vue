@@ -28,9 +28,13 @@
   --s-green:    oklch(48% 0.13 155);
 }
 
-/* Heading family: Kaiti SC (楷体-简) for institutional calligraphic authority.
-   Brushstroke-derived regular script — same calligraphic family as the 九桥同步 logo.
-   PingFang SC (fonts.sans) handles body, tables, and labels. */
+/* Unified type voice: Kaiti SC (楷体-简) throughout.
+   Calligraphic regular script matches the 九桥同步 brushstroke logo at every scale.
+   Full OS fallback chain: macOS → STKaiti → Windows KaiTi → generic serif.
+   Fira Code handles monospace only. */
+.slidev-layout {
+  font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
+}
 h1, h2, h3 {
   font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
 }
@@ -39,6 +43,8 @@ h1, h2, h3 {
 .slidev-layout.default {
   background-color: var(--ground);
   color: var(--ink);
+  display: flex;
+  flex-direction: column;
 }
 
 /* Committed brand color: full-bleed crimson header band on all content slides.
@@ -47,7 +53,7 @@ h1, h2, h3 {
   background-color: var(--brand);
   color: oklch(97% 0.005 30);
   padding: 0.75rem 3.5rem;
-  margin: -2.5rem -3.5rem 1.5rem;
+  margin: -2.5rem -3.5rem 1rem;
   font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
   font-size: 1.45rem;
   font-weight: 600;
@@ -65,7 +71,7 @@ h1, h2, h3 {
 .slidev-layout table thead th {
   background-color: var(--brand);
   color: oklch(97% 0.005 30);
-  padding: 0.45rem 0.85rem;
+  padding: 0.75rem 0.85rem;
   font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
   font-weight: 600;
   text-align: left;
