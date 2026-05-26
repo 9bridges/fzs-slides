@@ -26,7 +26,7 @@ css: unocss
     <h1 style="font-size: 2.5rem; font-weight: 700; color: var(--ink); line-height: 1.1; letter-spacing: -0.015em; background: none; padding: 0; margin: 0">FZS 数据同步平台</h1>
     <p style="font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin: 0">Financial-grade Zero-lag Sync<br>金融级零延迟数据库同步</p>
     <div style="margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--divider); color: var(--muted); font-size: 0.78rem; letter-spacing: 0.04em">
-      金融街证券 · 2026
+      金融街证券 · 2026 年 6 月 1 日
     </div>
   </div>
 </div>
@@ -79,13 +79,13 @@ FZS（**F**inancial-grade **Z**ero-lag **S**ync）是九桥同步自主研发的
 
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">五大组件</p>
 
-| 组件 | 形态 | 职责 |
+| 组件 | 技术栈 | 职责 |
 |------|------|------|
-| **FZS Agent** | C 二进制 | 抓取 + 装载（源/备端） |
-| **FZS Web** | Node.js Web | 可视化管理控制台 |
+| **FZS Agent** | C | 抓取 + 装载（源/备端） |
+| **FZS Web** | React / Remix | 可视化管理控制台 |
 | **FZS Web Server** | C++ REST | Agent 调度网关 |
-| **FZS Daemon** | Node.js 服务 | 告警监控 + 自动重启 |
-| **FZS Query** | Java Spring Boot | 数据比对与校验 |
+| **FZS Daemon** | Node.js | 告警监控 + 自动重启 |
+| **FZS Query** | Java / Spring Boot | 数据比对与校验 |
 
 </div>
 </div>
@@ -102,13 +102,13 @@ layout: default
   <div class="flex items-center gap-4">
     <span style="font-size: 1.8rem; font-weight: 700; opacity: 0.45; font-family: 'Kaiti SC', STKaiti, serif; line-height: 1">01</span>
     <div>
-      <h3 style="color: oklch(97% 0.005 30); font-weight: 700; font-size: 1rem; margin: 0 0 0.3rem">实时容灾</h3>
-      <p style="font-size: 0.88rem; line-height: 1.55; opacity: 0.9; margin: 0">将核心交易数据库（Oracle / 达梦）实时同步至同城或异地备库，持续增量延时 &lt; 1 秒，RPO ≈ 0，支持一键灾备切换。</p>
+      <h3 style="color: oklch(97% 0.005 30); font-weight: 700; font-size: 1rem; margin: 0 0 0.3rem">数据集成</h3>
+      <p style="font-size: 0.88rem; line-height: 1.55; opacity: 0.9; margin: 0">CDC 变更实时写入分析库（StarRocks / Doris）及消息队列（Kafka），T+0 报表与风控模型所需数据秒级就绪，彻底消除批处理等待窗口。</p>
     </div>
     <div style="margin-left: auto; text-align: right; flex-shrink: 0; padding-left: 2rem">
-      <p style="font-size: 0.72rem; opacity: 0.6; margin: 0 0 0.15rem; letter-spacing: 0.06em">持续增量延时</p>
-      <p style="font-size: 1.6rem; font-weight: 700; margin: 0; font-family: 'Kaiti SC', STKaiti, serif; line-height: 1">&lt; 1 秒</p>
-      <p style="font-size: 0.72rem; opacity: 0.6; margin: 0.25rem 0 0; letter-spacing: 0.06em">RPO ≈ 0</p>
+      <p style="font-size: 0.72rem; opacity: 0.6; margin: 0 0 0.15rem; letter-spacing: 0.06em">报表时效</p>
+      <p style="font-size: 1.6rem; font-weight: 700; margin: 0; font-family: 'Kaiti SC', STKaiti, serif; line-height: 1">T+0</p>
+      <p style="font-size: 0.72rem; opacity: 0.6; margin: 0.25rem 0 0; letter-spacing: 0.06em">无 ETL 批处理窗口</p>
     </div>
   </div>
 </div>
@@ -118,9 +118,9 @@ layout: default
 <div class="p-4" style="border: 1px solid var(--divider); border-top: none; border-right: none">
 <div class="flex items-baseline gap-2 mb-2">
 <span style="color: var(--muted); font-size: 1rem; font-weight: 700; line-height: 1">02</span>
-<h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">数据集成</h3>
+<h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">实时容灾</h3>
 </div>
-<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">变更同步至 StarRocks / Doris / Kafka，支撑 T+0 报表分析，无需 ETL 批处理窗口。</p>
+<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">Oracle / 达梦实时同步至备库，增量延时 &lt; 1 秒，RPO ≈ 0；故障时 Web UI 一键提升备库，RTO &lt; 10 分钟。</p>
 </div>
 
 <div class="p-4" style="border: 1px solid var(--divider); border-top: none; border-right: none">
@@ -128,7 +128,7 @@ layout: default
 <span style="color: var(--muted); font-size: 1rem; font-weight: 700; line-height: 1">03</span>
 <h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">信创迁移</h3>
 </div>
-<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">Oracle → 达梦 / 金仓 / openGauss 全链路支持，全量迁移后增量追平，停机窗口极短。</p>
+<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">Oracle → 达梦 / 金仓 / openGauss 全链路覆盖，全量完成后自动切入增量同步，业务切换停机窗口可缩短至分钟级。</p>
 </div>
 
 <div class="p-4" style="border: 1px solid var(--divider); border-top: none">
@@ -136,7 +136,7 @@ layout: default
 <span style="color: var(--muted); font-size: 1rem; font-weight: 700; line-height: 1">04</span>
 <h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">数据分发</h3>
 </div>
-<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">一个源端驱动多条链路，同一数据分发至多个下游，避免对源库的多次直连冲击。</p>
+<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">一次 CDC 抓取驱动多条下游链路，变更数据同时分发至报表库、缓存、消息队列，源库读压力不随消费方数量增加。</p>
 </div>
 
 </div>
@@ -156,7 +156,7 @@ layout: default
 
 <div class="text-sm mt-2">
 
-- Oracle（LogMiner）
+- Oracle DB
 - MySQL / MariaDB
 - PostgreSQL / openGauss / GaussDB
 - SQL Server
@@ -167,7 +167,7 @@ layout: default
 
 </div>
 
-<p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem">另支持 GBase8s · SUNDB · LightDB · Hive 等，共 17 种数据源</p>
+<p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem">另支持 GBase8s · SUNDB · StarRocks · Hive 等，共 17 种数据源</p>
 
 </div>
 <div>
@@ -181,7 +181,7 @@ layout: default
 | 目标类型 | 典型场景 |
 |----------|---------|
 | Apache Kafka | 事件流 / 下游消费 |
-| Apache Doris | OLAP 分析 |
+| Apache Doris / SelectDB | OLAP 分析 |
 | Apache Iceberg | 湖仓一体 |
 | Apache Paimon | 流批一体 |
 | GoldenDB | 分布式金融库 |
