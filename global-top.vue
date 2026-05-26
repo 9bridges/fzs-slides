@@ -87,4 +87,9 @@ h1, h2, h3 {
 .slidev-layout table tbody tr:hover td {
   background-color: var(--brand-pale);
 }
+
+/* Keep the top-right Slidev goto/toc drawer hidden during demos. */
+#slidev-goto-dialog {
+  display: none !important;
+}
 </style>
