@@ -242,91 +242,88 @@ layout: default
 </div>
 
 ---
-layout: image-right
-image: /fzs-create-link.png
-backgroundSize: contain
+layout: default
 ---
 
 # 链路配置：五步向导
 
-创建一条数据链路只需五步配置：
+<div class="flex gap-8 mt-3 items-start">
+<div class="space-y-2 text-sm" style="flex: 0 0 42%">
 
-<div class="mt-4 space-y-3">
+**① 基础信息**：选择源端节点 → 备端节点，填写链路名称与描述
 
-**① 基础信息**  
-配置链路拓扑：选择源端节点 → 备端节点，填写链路名称与描述
+**② 同步对象**：用户级 / 表级 / 列级；支持名称映射、类型映射、列过滤（WHERE 条件）及备端加列
 
-**② 同步对象**  
-选择同步粒度：用户级 / 表级 / 列级；支持名称映射、类型映射、列过滤（WHERE 条件）及备端加列
+**③ 同步策略**：选择同步模式（全量+增量 / 仅增量 / 仅全量）；配置 cron 调度与交易日历
 
-**③ 同步策略**  
-选择同步模式：实时模式（全量 + 增量）/ 仅增量 / 仅全量；配置定时调度与交易日历
+**④ 同步配置**：全量并发数、增量批次大小、网络压缩
 
-**④ 同步配置**  
-全量并发数、增量批次大小、网络压缩等高级参数
+**⑤ 其它配置**：告警绑定、分组归属、备注信息
 
-**⑤ 其它配置**  
-告警绑定、分组归属、备注信息
-
+</div>
+<div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
+  <img src="/fzs-create-link.png" alt="链路配置向导" style="width: 100%; display: block" />
+</div>
 </div>
 
 
 ---
-layout: image-right
-image: /fzs-link1.png
-backgroundSize: contain
+layout: default
 ---
 
 # 链路实时监控
 
-每条链路提供三组实时监控图表：
+<div class="flex gap-8 mt-3 items-start">
+<div class="space-y-2 text-sm" style="flex: 0 0 42%">
 
-<div class="mt-6 space-y-4">
+**增量累计**：统计 INSERT / UPDATE / DELETE / DDL 在抓取端与装载端的累计行数，两端对比可发现积压或数据丢失
 
-**增量累计**  
-统计 INSERT / UPDATE / DELETE / DDL 在抓取端与装载端的累计行数，两端对比可发现积压或数据丢失
+**实时延时**：独立展示抓取端与装载端的秒级延时，快速定位瓶颈位于网络还是目标库
 
-**实时延时**  
-以秒为单位独立展示抓取端与装载端的延时，快速定位性能瓶颈位于网络还是目标库
+**全量统计**：显示全量阶段各表的迁移进度、已同步行数与 QPS
 
-**全量统计**  
-显示全量阶段各表的迁移进度、已同步行数与 QPS
-
+</div>
+<div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
+  <img src="/fzs-link1.png" alt="链路实时监控" style="width: 100%; display: block" />
+</div>
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.82rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">抓取端 / 装载端双端延时独立监控 · 秒级定位瓶颈 · 全量 QPS 实时可见</div>
 
 ---
-layout: image-right
-image: /fzs-alert-settings.png
-backgroundSize: contain
+layout: default
 ---
 
 # 告警管理
 
-FZS Daemon 每 **30 秒**轮询所有运行中的链路，支持三类告警策略：
-
-<div class="mt-6 space-y-5" style="font-size: 0.92rem">
+<div class="flex gap-8 mt-3 items-start">
+<div style="flex: 0 0 42%">
+<div class="space-y-3 text-sm">
 
 <div class="flex gap-3 items-start">
   <span class="shrink-0 rounded-full" style="width: 0.6rem; height: 0.6rem; background: var(--s-red); margin-top: 0.3rem"></span>
-  <div><strong style="color: var(--ink)">报错告警</strong><br>链路进入异常状态时立即触发，零延迟感知同步中断</div>
+  <div><strong>报错告警</strong>：链路进入异常状态时立即触发，最长 30 秒内感知同步中断</div>
 </div>
 
 <div class="flex gap-3 items-start">
   <span class="shrink-0 rounded-full" style="width: 0.6rem; height: 0.6rem; background: var(--s-amber); margin-top: 0.3rem"></span>
-  <div><strong style="color: var(--ink)">延时告警</strong><br>增量延时超过自定义阈值（秒）时触发，可按业务 RPO 要求自定义</div>
+  <div><strong>延时告警</strong>：增量延时超过自定义阈值（秒）时触发，可按业务 RPO 要求自定义</div>
 </div>
 
 <div class="flex gap-3 items-start">
   <span class="shrink-0 rounded-full" style="width: 0.6rem; height: 0.6rem; background: var(--s-blue); margin-top: 0.3rem"></span>
-  <div><strong style="color: var(--ink)">空闲告警</strong><br>源端在阈值时间内无任何数据变化时触发，用于感知业务停摆或采集失效</div>
+  <div><strong>空闲告警</strong>：源端在阈值时间内无数据变化时触发，检测业务停摆或上游采集失效</div>
 </div>
 
+</div>
+</div>
+<div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
+  <img src="/fzs-alert-settings.png" alt="告警管理" style="width: 100%; display: block" />
+</div>
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.85rem">
-<strong>通知渠道</strong>：Webhook（企微 / 钉钉 / 飞书）+ SMTP 邮件，可同时开启 · 30 秒轮询间隔
+<strong>通知渠道</strong>：Webhook（企微 / 钉钉 / 飞书 / 短信平台）+ SMTP 邮件
 </div>
 
 ---
@@ -370,50 +367,40 @@ FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 </div>
 
 ---
-layout: image-right
-image: /fzs-data-task-detail.png
-backgroundSize: contain
+layout: default
 ---
 
 # 数据比对与校验
 
-通过 **FZS Query**（独立 Java 服务）提供两层数据一致性验证：
+<div class="flex gap-8 mt-3 items-start">
+<div class="space-y-2 text-sm" style="flex: 0 0 42%">
 
-<div class="mt-4 space-y-4">
+通过 **FZS Query**（独立 Java 服务）提供两层验证：
 
-<div class="p-4" style="border: 1px solid var(--divider); background: var(--surface)">
-<h3 class="font-bold" style="color: var(--brand)">快速行数比对</h3>
-<p class="mt-1" style="font-size: 0.88rem">同时 COUNT 源端与备端同名表，秒级获取行数差异，即时判断数据是否一致</p>
-<p class="mt-1" style="font-size: 0.78rem; color: var(--muted)">支持：Oracle、MySQL、PostgreSQL、GaussDB、达梦、金仓、openGauss、TiDB、TDSQL、StarRocks、Doris、Vastbase、PolarDB、SUNDB</p>
+**快速行数比对**：并行查询源端与备端同名表的行数，秒级获取差异，即时判断是否一致
+
+**逐行内容差异校验**：SQL 层对比实际数据，生成差异 Excel 文件供下载，精确定位不一致行；结果可由 AI 助手汇报摘要
+
+<p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem">支持：Oracle、MySQL、PostgreSQL、GaussDB、达梦、金仓、openGauss、TiDB、TDSQL、StarRocks、Doris、Vastbase、PolarDB、SUNDB</p>
+
 </div>
-
-<div class="p-4" style="border: 1px solid var(--divider); background: var(--surface)">
-<h3 class="font-bold" style="color: var(--brand)">逐行内容差异校验</h3>
-<p class="mt-1" style="font-size: 0.88rem">在 SQL 层对比指定表的实际数据，生成差异 Excel 文件供下载，精确定位不一致行</p>
-<p class="mt-1" style="font-size: 0.78rem; color: var(--muted)">结果文件可直接由 AI 助手读取并汇报摘要</p>
+<div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
+  <img src="/fzs-data-task-detail.png" alt="数据比对与校验" style="width: 100%; display: block" />
 </div>
-
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.82rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">行数比对秒级完成 · 差异明细导出 Excel · 支持 14 种数据库</div>
 
 ---
-layout: image-right
-image: /fzs-ai-chat.png
-backgroundSize: contain
+layout: default
 ---
 
 # AI 助手
 
-内置 AI 助手，通过自然语言完成 FZS 平台绝大多数操作。
+<div class="flex gap-8 mt-3 items-start">
+<div class="space-y-2 text-sm" style="flex: 0 0 42%">
 
-<div class="mt-4 space-y-3 text-sm">
-
-**支持主流 LLM**  
-DeepSeek · 豆包 Doubao · 千问 Qwen · Kimi · 智谱 GLM · MiniMax  
-→ 支持私有部署地址，适合内网隔离环境
-
-**覆盖的操作类别**
+**支持主流 LLM**：DeepSeek · 豆包 · 千问 · Kimi · 智谱 GLM · MiniMax；支持私有部署地址，适合内网隔离
 
 - Web Server、数据节点的增删改查
 - 链路的创建、启停、修复、重置、主备切换、灾备切换
@@ -421,9 +408,20 @@ DeepSeek · 豆包 Doubao · 千问 Qwen · Kimi · 智谱 GLM · MiniMax
 - 数据比对、日志查询、坏表检查
 - 导航分组管理、系统概览与日志
 
-**边界约束**  
-AI 遵守当前用户权限；删除 / 切换等高风险操作会要求明确确认；不能访问业务明细数据
+**边界约束**：遵守当前用户权限；高风险操作需二次确认；不能访问业务明细数据
 
+</div>
+<div style="flex: 1; display: grid; grid-template-columns: 45fr 55fr; grid-template-rows: auto auto; gap: 0.75rem">
+  <div style="border: 1px solid var(--divider); overflow: hidden; grid-column: 1; grid-row: 1 / 3">
+    <img src="/ai-chatbox.png" alt="AI 对话" style="width: 100%; display: block" />
+  </div>
+  <div style="border: 1px solid var(--divider); overflow: hidden; grid-column: 2; grid-row: 1">
+    <img src="/ai-llm-config.png" alt="AI 模型配置" style="width: 100%; display: block" />
+  </div>
+  <div style="border: 1px solid var(--divider); overflow: hidden; grid-column: 2; grid-row: 2">
+    <img src="/ai-llm-config-dialog.png" alt="添加 AI 配置" style="width: 100%; display: block" />
+  </div>
+</div>
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.82rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">支持私有部署 · 适配内网隔离 · 权限约束 · 高风险操作需二次确认</div>
