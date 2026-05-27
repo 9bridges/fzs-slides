@@ -241,6 +241,131 @@ layout: default
 <strong>定时调度</strong>：所有模式均支持 cron 调度与<strong>交易日历</strong>（非交易日自动暂停），满足金融行业合规要求。
 </div>
 
+<style>
+.flow-diagram-wrap .mermaid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.flow-diagram-wrap .mermaid svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+}
+
+.flow-diagram-wrap > div:first-child {
+  transform: scale(0.93);
+  transform-origin: top center;
+}
+
+.flow-diagram-wrap > div:last-child {
+  transform: scale(1.12);
+  transform-origin: top center;
+}
+</style>
+
+---
+layout: default
+transition: slide-left
+---
+
+# 数据装载原理剖析
+
+<div class="flow-diagram-wrap" style="width: calc(100% - 6rem); margin: 0 3rem; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 1rem; align-items: start">
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+
+```mermaid
+%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 12, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#f8fafc','primaryTextColor':'#1f2937','primaryBorderColor':'#d1d5db','lineColor':'#6b7280','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px'}}}%%
+flowchart TD
+  A([开始]) --> B[open 文件]
+  B --> C[解析增量]
+  C --> D{同上条操作?}
+  D -->|否| E[prepare]
+  D -->|是| G
+  E --> G[添加数据到 statement]
+  G --> H{batch=1024\n或文件尾?}
+  H -->|否| C
+  H -->|是| X([进入执行段])
+```
+
+<div style="margin-top: -0.2rem; color: var(--muted); font-size: 0.72rem; text-align: center; width: 100%;">解析与组批阶段</div>
+
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+
+```mermaid
+%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 12, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#f8fafc','primaryTextColor':'#1f2937','primaryBorderColor':'#d1d5db','lineColor':'#6b7280','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px'}}}%%
+flowchart TD
+  X([进入执行段]) --> I[execute]
+  I --> J{文件结束?}
+  J -->|否| C2[回解析段]
+  J -->|是| K[commit + checkpoint]
+  K --> L([结束])
+```
+
+<div style="margin-top: -0.2rem; color: var(--muted); font-size: 0.72rem; text-align: center; width: 100%;">执行与提交阶段</div>
+
+</div>
+
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0.5rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.8rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; z-index: 6">按操作类型复用 statement · 达批次执行 · 文件结束提交 checkpoint</div>
+
+---
+layout: default
+transition: slide-left
+---
+
+# 数据传输流程详解
+
+<div class="flow-diagram-wrap" style="width: calc(100% - 6rem); margin: 0 3rem; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 1rem; align-items: start">
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+
+```mermaid
+%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 12, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#f8fafc','primaryTextColor':'#1f2937','primaryBorderColor':'#d1d5db','lineColor':'#6b7280','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px'}}}%%
+flowchart TD
+  A([开始]) --> B[取增量]
+  B --> C{成功?}
+  C -->|是| D[写缓存]
+  C -->|否| F{超0.5s?}
+  D --> E{缓存>4M?}
+  E -->|否| B
+  E -->|是| J[写磁盘]
+  F -->|否| B
+  F -->|是| G{缓存有数据?}
+  G -->|否| B
+  G -->|是| J
+  J --> X([进入发送段])
+```
+
+<div style="margin-top: -0.2rem; color: var(--muted); font-size: 0.72rem; text-align: center; width: 100%;">采集/缓存/落盘阶段</div>
+
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+
+```mermaid
+%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 12, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#f8fafc','primaryTextColor':'#1f2937','primaryBorderColor':'#d1d5db','lineColor':'#6b7280','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px'}}}%%
+flowchart TD
+  X([进入发送段]) --> K[tcp 发送]
+  K --> L{收到 ACK?}
+  L -->|否| K
+  L -->|是| M[记完成号并删源文件]
+  M --> N([结束])
+```
+
+<div style="margin-top: -0.2rem; color: var(--muted); font-size: 0.72rem; text-align: center; width: 100%;">发送/确认/清理阶段</div>
+
+</div>
+
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0.5rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.8rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; z-index: 6">4M 缓存阈值落盘 · 0.5s 超时兜底发送 · ACK 后删除源端文件</div>
+
 ---
 layout: default
 ---
@@ -335,6 +460,10 @@ layout: default
 <div class="grid grid-cols-2 gap-8 mt-6">
 <div>
 
+### Docker Swarm + Gluster 三节点部署模式
+
+三节点混合集群，3 台节点同时承载 Swarm 管理与业务容器，任一节点故障不影响整体调度
+
 ### Daemon 自动重启
 
 FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
@@ -357,6 +486,8 @@ FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 | **灾备切换** | 一键将容灾备库提升为主库，RTO < 10 分钟 |
 
 以上操作均可通过 Web UI 或 AI 助手完成，操作前会要求二次确认。
+
+
 
 </div>
 </div>

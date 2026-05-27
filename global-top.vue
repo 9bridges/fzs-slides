@@ -47,9 +47,29 @@ h1, h2, h3 {
   flex-direction: column;
 }
 
+.slidev-layout.two-cols-header {
+  background-color: var(--ground);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+
 /* Committed brand color: full-bleed crimson header band on all content slides.
    px-14 py-10 = 3.5rem / 2.5rem — negative margins break out of parent padding. */
 .slidev-layout.default h1 {
+  background-color: var(--brand);
+  color: oklch(97% 0.005 30);
+  padding: 0.75rem 3.5rem;
+  margin: -2.5rem -3.5rem 1rem;
+  font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  border: none;
+}
+
+.slidev-layout.two-cols-header h1 {
   background-color: var(--brand);
   color: oklch(97% 0.005 30);
   padding: 0.75rem 3.5rem;
