@@ -409,7 +409,7 @@ layout: default
 
 </div>
 <div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
-  <img src="/fzs-link1.png" alt="链路实时监控" style="width: 100%; display: block" />
+  <img src="/data-link.jpeg" alt="链路实时监控" style="width: 100%; display: block" />
 </div>
 </div>
 
@@ -516,7 +516,7 @@ layout: default
 
 </div>
 <div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
-  <img src="/fzs-data-task-detail.png" alt="数据比对与校验" style="width: 100%; display: block" />
+  <img src="/data-verification.png" alt="数据比对与校验" style="width: 100%; display: block" />
 </div>
 </div>
 
