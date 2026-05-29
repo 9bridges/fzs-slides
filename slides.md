@@ -54,6 +54,7 @@ layout: default
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">11</span><span>管理控制台一览</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">12</span><span>性能测试</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">13</span><span>信创适配认证</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">14</span><span>案例分享</span></div>
 </div>
 </div>
 
@@ -713,6 +714,129 @@ layout: default
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">达梦 · 崖山 YashanDB · 麒麟软件 · 共 9 项信创认证（3 / 3）</div>
+
+---
+layout: default
+---
+
+# 山西证券恒生 UF 3.0 信创升级
+
+<div style="margin-top: 0.9rem">
+
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.4rem">案例背景</p>
+  <p style="font-size: 0.9rem; line-height: 1.65; color: var(--ink); margin: 0 0 1.5rem">恒生 UF 3.0 嫁接 GaussDB 的<strong>首个券商行业案例</strong>，核心交易系统信创迁移，业务零中断切换。</p>
+
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">九桥 FZS 业务链路</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem">
+    <div style="border: 1px solid var(--divider); overflow: hidden">
+      <div style="background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.65rem; padding: 0.3rem 0.75rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; letter-spacing: 0.05em">链路一 · 实时容灾</div>
+      <div style="padding: 0.65rem 0.75rem">
+        <div style="font-size: 0.88rem; font-family: 'Fira Code', monospace; color: var(--ink); margin-bottom: 0.3rem">GaussDB → GaussDB</div>
+        <div style="font-size: 0.72rem; color: var(--muted); line-height: 1.5">双机房同步 · RTO / RPO 秒级</div>
+      </div>
+    </div>
+    <div style="border: 1px solid var(--divider); overflow: hidden">
+      <div style="background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.65rem; padding: 0.3rem 0.75rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; letter-spacing: 0.05em">链路二 · 异构同步</div>
+      <div style="padding: 0.65rem 0.75rem">
+        <div style="font-size: 0.88rem; font-family: 'Fira Code', monospace; color: var(--ink); margin-bottom: 0.3rem">GaussDB → Oracle</div>
+        <div style="font-size: 0.72rem; color: var(--muted); line-height: 1.5">赋能数据部门实时查询与分析</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">覆盖部门</p>
+  <div style="display: flex; gap: 0.75rem">
+    <div style="background: var(--brand-pale); border: 1px solid var(--divider); padding: 0.45rem 1.1rem">
+      <div style="font-size: 0.82rem; font-weight: 600; color: var(--ink)">信息技术部</div>
+      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">太原</div>
+    </div>
+    <div style="background: var(--brand-pale); border: 1px solid var(--divider); padding: 0.45rem 1.1rem">
+      <div style="font-size: 0.82rem; font-weight: 600; color: var(--ink)">金融科技部</div>
+      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">北京</div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 恒生 UF 3.0 信创升级（1 / 3）</div>
+
+---
+layout: default
+---
+
+# 山西证券 · UF30 信创 OTC 逻辑部署
+
+<p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">微服务同城双活 · 数据库域名连接透明切换 · FZS 跨机房实时同步</p>
+<img src="/case-shanxi-arch.png" alt="山西证券 UF30 信创 OTC 逻辑部署图" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 微服务同城双活 · 数据库域名连接 · 全局负载均衡（2 / 3）</div>
+
+---
+layout: default
+---
+
+# 山西证券 · 上线切换任务分解
+
+<p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">准备阶段 · 周五清算前 · 标黄行为九桥同步检查项（GAUSS-GAUSS / GAUSS-ORACLE）</p>
+<img src="/case-shanxi-checklist.png" alt="山西证券上线切换任务清单" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 九桥同步检查项：GAUSS-GAUSS / GAUSS-ORACLE（3 / 3）</div>
+
+---
+layout: default
+---
+
+# 贵阳农商行信创改造
+
+<div style="margin-top: 0.9rem">
+
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.4rem">案例背景</p>
+  <p style="font-size: 0.9rem; line-height: 1.65; color: var(--ink); margin: 0 0 1.5rem">科蓝软件（300663）合作项目，SUNDB 数据库基于 FZS 实现<strong>两地三中心数据容灾</strong>，同组主备节点支持灾备切换。</p>
+
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">核心 SLA 指标</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem">
+    <div style="border: 1px solid var(--divider); overflow: hidden">
+      <div style="background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.65rem; padding: 0.3rem 0.75rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; letter-spacing: 0.05em">数据一致性</div>
+      <div style="padding: 0.65rem 0.75rem">
+        <div style="font-size: 1.1rem; font-family: 'Fira Code', monospace; color: var(--ink); font-weight: 600; margin-bottom: 0.2rem">RPO = 0</div>
+        <div style="font-size: 0.72rem; color: var(--muted); line-height: 1.5">零数据丢失</div>
+      </div>
+    </div>
+    <div style="border: 1px solid var(--divider); overflow: hidden">
+      <div style="background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.65rem; padding: 0.3rem 0.75rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; letter-spacing: 0.05em">恢复时间</div>
+      <div style="padding: 0.65rem 0.75rem">
+        <div style="font-size: 1.1rem; font-family: 'Fira Code', monospace; color: var(--ink); font-weight: 600; margin-bottom: 0.2rem">RTO &lt; 10min</div>
+        <div style="font-size: 0.72rem; color: var(--muted); line-height: 1.5">灾备节点秒级接管</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">方案特点</p>
+  <div style="display: flex; gap: 0.75rem">
+    <div style="background: var(--brand-pale); border: 1px solid var(--divider); padding: 0.45rem 1.1rem">
+      <div style="font-size: 0.82rem; font-weight: 600; color: var(--ink)">同组主备切换</div>
+      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">灾备节点自动接管</div>
+    </div>
+    <div style="background: var(--brand-pale); border: 1px solid var(--divider); padding: 0.45rem 1.1rem">
+      <div style="font-size: 0.82rem; font-weight: 600; color: var(--ink)">数据库无关</div>
+      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">方案可平替为任意数据库</div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 贵阳农商行 · 信创改造 两地三中心容灾（1 / 2）</div>
+
+---
+layout: default
+---
+
+# 贵阳农商行 · 生产数据库信创部署方案
+
+<p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">主+备+灾备+管控+逃生库 · CDC 实时同步 · 鲲鹏 Arm · 麒麟 v10</p>
+<img src="/case-guiyang-arch.png" alt="贵阳农商行信创部署方案架构" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 贵阳农商行 · 主副中心 CDC 同步架构（2 / 2）</div>
 
 ---
 layout: center
