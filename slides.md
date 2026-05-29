@@ -52,6 +52,8 @@ layout: default
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">09</span><span>数据比对与校验</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">10</span><span>AI 助手</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">11</span><span>管理控制台一览</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">12</span><span>性能测试</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">13</span><span>信创适配认证</span></div>
 </div>
 </div>
 
@@ -104,6 +106,16 @@ layout: default
     <div>
       <h3 style="color: oklch(97% 0.005 30); font-weight: 700; font-size: 1rem; margin: 0 0 0.3rem">数据集成</h3>
       <p style="font-size: 0.88rem; line-height: 1.55; opacity: 0.9; margin: 0">CDC 变更实时写入分析库（StarRocks / Doris）及消息队列（Kafka），T+0 报表与风控模型所需数据秒级就绪，彻底消除批处理等待窗口。</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; align-items: center">
+        <span style="font-size: 0.58rem; opacity: 0.45; letter-spacing: 0.08em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
+        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">中银国际证券</span>
+        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">华安证券</span>
+        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">山西证券</span>
+        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">财通证券</span>
+        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">万联证券</span>
+        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">阜外医院/平安期货</span>
+        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">金融街证券</span>
+      </div>
     </div>
     <div style="margin-left: auto; text-align: right; flex-shrink: 0; padding-left: 2rem">
       <p style="font-size: 0.72rem; opacity: 0.6; margin: 0 0 0.15rem; letter-spacing: 0.06em">报表时效</p>
@@ -121,6 +133,16 @@ layout: default
 <h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">实时容灾</h3>
 </div>
 <p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">Oracle / 达梦实时同步至备库，增量延时 &lt; 1 秒，RPO ≈ 0；故障时 Web UI 一键提升备库，RTO &lt; 10 分钟。</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.45rem; align-items: center">
+  <span style="font-size: 0.58rem; color: var(--muted); opacity: 0.6; letter-spacing: 0.08em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">民生/盛达/晨鑫/东方汇金期货</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中信/金瑞/国证期货</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">三立/华源期货</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">云南信托/联储证券/橡华国际</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">科蓝软件</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">山西证券</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">浙商期货</span>
+</div>
 </div>
 
 <div class="p-4" style="border: 1px solid var(--divider); border-top: none; border-right: none">
@@ -129,6 +151,18 @@ layout: default
 <h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">信创迁移</h3>
 </div>
 <p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">Oracle → 达梦 / 金仓 / openGauss 全链路覆盖，全量完成后自动切入增量同步，业务切换停机窗口可缩短至分钟级。</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.45rem; align-items: center">
+  <span style="font-size: 0.58rem; color: var(--muted); opacity: 0.6; letter-spacing: 0.08em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中信/金瑞/五矿/中盛/创元期货</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">南华期货</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">科蓝软件</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">宁证期货</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">山西证券</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中邮证券</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">国投安信期货</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">长城基金</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">混沌天成期货</span>
+</div>
 </div>
 
 <div class="p-4" style="border: 1px solid var(--divider); border-top: none">
@@ -137,6 +171,10 @@ layout: default
 <h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">数据分发</h3>
 </div>
 <p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">一次 CDC 抓取驱动多条下游链路，变更数据同时分发至报表库、缓存、消息队列，源库读压力不随消费方数量增加。</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.45rem; align-items: center">
+  <span style="font-size: 0.58rem; color: var(--muted); opacity: 0.6; letter-spacing: 0.07em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
+  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中国人寿财险</span>
+</div>
 </div>
 
 </div>
@@ -582,6 +620,99 @@ layout: default
 </div>
 
 </div>
+
+---
+layout: default
+---
+
+# 性能测试
+
+<div style="margin-top: 0.75rem">
+  <img src="/perf-test.png" alt="性能测试报告" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+</div>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">部署模式：中间机 · CPU 16c 海光 Dhyana · MEM 32 GB · 1–4 与竞品齐平 · 5–6 优于竞品</div>
+
+---
+layout: default
+---
+
+# 信创适配认证
+
+<div style="display: flex; gap: 2rem; margin-top: 0.75rem; align-items: flex-start">
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-phytium.jpg" alt="飞腾兼容性证明" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">飞腾<br>产品兼容性证明</p>
+  </div>
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-kingbase.jpg" alt="金仓兼容性认证" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">金仓 KingBase<br>兼容性认证证书</p>
+  </div>
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-tencent.jpg" alt="腾讯云兼容性互认" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">腾讯云<br>产品兼容性互认证明</p>
+  </div>
+
+</div>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">飞腾 · 金仓 KingBase · 腾讯云 TDSQL · 共 9 项信创认证（1 / 3）</div>
+
+---
+layout: default
+---
+
+# 信创适配认证
+
+<div style="display: flex; gap: 2rem; margin-top: 0.75rem; align-items: flex-start">
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-aliyun.jpg" alt="阿里云生态集成认证" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">阿里云<br>产品生态集成认证</p>
+  </div>
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-oceanbase.jpg" alt="OceanBase兼容互认" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">OceanBase<br>产品兼容互认证书</p>
+  </div>
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-huawei.jpg" alt="华为技术认证" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">华为<br>HUAWEI COMPATIBLE 技术认证</p>
+  </div>
+
+</div>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">阿里云 PolarDB · OceanBase · 华为 GaussDB · 共 9 项信创认证（2 / 3）</div>
+
+---
+layout: default
+---
+
+# 信创适配认证
+
+<div style="display: flex; gap: 2rem; margin-top: 0.75rem; align-items: flex-start">
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-dameng.jpg" alt="达梦兼容互认" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">达梦数据库<br>产品兼容互认证证书</p>
+  </div>
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-yashandb.jpg" alt="崖山兼容互认" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">崖山 YashanDB<br>产品兼容互认证明</p>
+  </div>
+
+  <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+    <img src="/cert-kylinsoft.jpg" alt="麒麟软件适配认证" style="width: 100%; display: block; border: 1px solid var(--divider)" />
+    <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin: 0.45rem 0 0; line-height: 1.5">麒麟软件<br>适配认证</p>
+  </div>
+
+</div>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">达梦 · 崖山 YashanDB · 麒麟软件 · 共 9 项信创认证（3 / 3）</div>
 
 ---
 layout: center
