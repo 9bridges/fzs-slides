@@ -45,9 +45,9 @@ layout: default
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">04</span><span>三种同步模式</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">05</span><span>链路配置：五步向导</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">06</span><span>链路实时监控</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">07</span><span>告警管理</span></div>
 </div>
 <div class="space-y-3">
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">07</span><span>告警管理</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">08</span><span>高可用 · 自动容灾</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">09</span><span>数据比对与校验</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">10</span><span>AI 助手</span></div>
@@ -430,6 +430,7 @@ layout: default
 </div>
 </div>
 
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">同步对象粒度：用户级 / 表级 / 列级 · 名称映射 · 类型映射 · 列过滤 · 五步完成配置</div>
 
 ---
 layout: default
@@ -465,17 +466,17 @@ layout: default
 <div class="space-y-3 text-sm">
 
 <div class="flex gap-3 items-start">
-  <span class="shrink-0 rounded-full" style="width: 0.6rem; height: 0.6rem; background: var(--s-red); margin-top: 0.3rem"></span>
+  <span class="shrink-0" style="width: 0.6rem; height: 0.6rem; background: var(--s-red); margin-top: 0.3rem; display: inline-block"></span>
   <div><strong>报错告警</strong>：链路进入异常状态时立即触发，最长 30 秒内感知同步中断</div>
 </div>
 
 <div class="flex gap-3 items-start">
-  <span class="shrink-0 rounded-full" style="width: 0.6rem; height: 0.6rem; background: var(--s-amber); margin-top: 0.3rem"></span>
+  <span class="shrink-0" style="width: 0.6rem; height: 0.6rem; background: var(--s-amber); margin-top: 0.3rem; display: inline-block"></span>
   <div><strong>延时告警</strong>：增量延时超过自定义阈值（秒）时触发，可按业务 RPO 要求自定义</div>
 </div>
 
 <div class="flex gap-3 items-start">
-  <span class="shrink-0 rounded-full" style="width: 0.6rem; height: 0.6rem; background: var(--s-blue); margin-top: 0.3rem"></span>
+  <span class="shrink-0" style="width: 0.6rem; height: 0.6rem; background: var(--s-blue); margin-top: 0.3rem; display: inline-block"></span>
   <div><strong>空闲告警</strong>：源端在阈值时间内无数据变化时触发，检测业务停摆或上游采集失效</div>
 </div>
 
@@ -499,11 +500,11 @@ layout: default
 <div class="grid grid-cols-2 gap-8 mt-6">
 <div>
 
-### Docker Swarm + Gluster 三节点部署模式
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.4rem">Docker Swarm + Gluster 三节点</p>
 
 三节点混合集群，3 台节点同时承载 Swarm 管理与业务容器，任一节点故障不影响整体调度
 
-### Daemon 自动重启
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin: 0.9rem 0 0.4rem">Daemon 自动重启</p>
 
 FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 
@@ -516,7 +517,7 @@ FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 </div>
 <div>
 
-### 主备切换 / 灾备切换
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">主备切换 / 灾备切换</p>
 
 | 操作 | 说明 |
 |------|------|
@@ -531,10 +532,7 @@ FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 1rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif">
-  <p style="font-size: 1rem; font-weight: 700; margin: 0 0 0.2rem; line-height: 1.2">RTO &lt; 10 分钟 · RPO ≈ 0</p>
-  <p style="font-size: 0.78rem; margin: 0; opacity: 0.8; font-weight: 400">无人值守自恢复 · Web UI 一键切换 · 操作前二次确认</p>
-</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">RTO &lt; 10 分钟 · RPO ≈ 0 · 无人值守自恢复 · Web UI 一键切换 · 操作前二次确认</div>
 
 ---
 layout: default
@@ -622,15 +620,15 @@ layout: default
 
 </div>
 
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">本地独立部署 · 无外部依赖 · 深色 / 浅色主题自适应 · 刷新频率 10s / 30s / 60s 可配</div>
+
 ---
 layout: default
 ---
 
 # 性能测试
 
-<div style="margin-top: 0.75rem">
-  <img src="/perf-test.png" alt="性能测试报告" style="width: 100%; display: block; border: 1px solid var(--divider)" />
-</div>
+<img src="/perf-test.png" alt="性能测试报告" style="display: block; max-width: 100%; max-height: 380px; border: 1px solid var(--divider)" />
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">部署模式：中间机 · CPU 16c 海光 Dhyana · MEM 32 GB · 1–4 与竞品齐平 · 5–6 优于竞品</div>
 
