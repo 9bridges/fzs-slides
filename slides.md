@@ -719,38 +719,57 @@ layout: default
 
 # 山西证券恒生 UF 3.0 信创升级
 
-<div style="margin-top: 0.9rem">
+<div style="margin-top: 0.5rem">
 
-  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.4rem">案例背景</p>
-  <p style="font-size: 0.9rem; line-height: 1.65; color: var(--ink); margin: 0 0 1.5rem">恒生 UF 3.0 嫁接 GaussDB 的<strong>首个券商行业案例</strong>，核心交易系统信创迁移，业务零中断切换。</p>
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.3rem">案例背景</p>
+  <p style="font-size: 0.88rem; line-height: 1.55; color: var(--ink); margin: 0 0 0.8rem">恒生 UF 3.0 嫁接 GaussDB 的<strong>首个券商行业案例</strong>，核心交易系统信创迁移，业务零中断切换。</p>
 
-  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">九桥 FZS 业务链路</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem">
-    <div style="border: 1px solid var(--divider); overflow: hidden">
-      <div style="background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.65rem; padding: 0.3rem 0.75rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; letter-spacing: 0.05em">链路一 · 实时容灾</div>
-      <div style="padding: 0.65rem 0.75rem">
-        <div style="font-size: 0.88rem; font-family: 'Fira Code', monospace; color: var(--ink); margin-bottom: 0.3rem">GaussDB → GaussDB</div>
-        <div style="font-size: 0.72rem; color: var(--muted); line-height: 1.5">双机房同步 · RTO / RPO 秒级</div>
-      </div>
+  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.35rem">九桥 FZS 业务链路</p>
+  <div style="border: 1px solid var(--divider); margin-bottom: 0.7rem">
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.75rem">
+      <span>业务系统</span><span>源端 → 目标端</span><span>同步类型</span><span>归属部门</span>
     </div>
-    <div style="border: 1px solid var(--divider); overflow: hidden">
-      <div style="background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.65rem; padding: 0.3rem 0.75rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; letter-spacing: 0.05em">链路二 · 异构同步</div>
-      <div style="padding: 0.65rem 0.75rem">
-        <div style="font-size: 0.88rem; font-family: 'Fira Code', monospace; color: var(--ink); margin-bottom: 0.3rem">GaussDB → Oracle</div>
-        <div style="font-size: 0.72rem; color: var(--muted); line-height: 1.5">赋能数据部门实时查询与分析</div>
-      </div>
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">UF 3.0</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> GaussDB</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">实时容灾</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">信息技术部</span>
     </div>
-  </div>
-
-  <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">覆盖部门</p>
-  <div style="display: flex; gap: 0.75rem">
-    <div style="background: var(--brand-pale); border: 1px solid var(--divider); padding: 0.45rem 1.1rem">
-      <div style="font-size: 0.82rem; font-weight: 600; color: var(--ink)">信息技术部</div>
-      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">太原</div>
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">UF 3.0</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> Oracle</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">异构同步</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
     </div>
-    <div style="background: var(--brand-pale); border: 1px solid var(--divider); padding: 0.45rem 1.1rem">
-      <div style="font-size: 0.82rem; font-weight: 600; color: var(--ink)">金融科技部</div>
-      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">北京</div>
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">集中交易</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">实时容灾</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">OA 办公</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">达梦 V8 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">信创同步</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">开户系统</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">MySQL 8.0 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">异构同步</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">账户系统</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> MySQL 8.0</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">反向回写</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">交易风控</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Kafka 2.7.x</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">实时集成</span>
+      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
     </div>
   </div>
 
