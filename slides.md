@@ -17,7 +17,7 @@ css: unocss
 
 <div style="position: absolute; inset: 0; display: grid; grid-template-columns: 40% 60%">
   <div class="flex flex-col justify-center items-center gap-5 px-10" style="background: var(--brand)">
-    <img src="/logo.png" alt="九桥同步" class="h-14" style="filter: brightness(0) invert(1); opacity: 0.93" />
+    <img src="/logo.webp" alt="九桥同步" class="h-14" style="filter: brightness(0) invert(1); opacity: 0.93" />
     <div style="width: 2rem; height: 1px; background: oklch(72% 0.04 25)"></div>
     <p class="text-center" style="color: oklch(82% 0.045 25); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase">数据库同步专家</p>
   </div>
@@ -75,7 +75,7 @@ FZS（**F**inancial-grade **Z**ero-lag **S**ync）是九桥同步自主研发的
 
 - **日志抓取**：直接读取源端事务日志（Oracle Redo / MySQL Binlog / PostgreSQL WAL 等），无业务侵入
 - **异构转换**：在抓取层完成 DDL/DML 解析与类型映射，写入任意目标库
-- **全量 + 增量**：同一链路统一调度，全量结束后自动切换增量，断点续传（checkpoint）
+- **全量 + 增量**：同一链路统一调度，全量结束后自动切换增量，支持断点续传
 
 </div>
 <div>
@@ -93,7 +93,7 @@ FZS（**F**inancial-grade **Z**ero-lag **S**ync）是九桥同步自主研发的
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.65rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.82rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">无业务侵入 · 全量 + 增量统一调度 · 断点续传 · 五大组件协同部署</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">无业务侵入 · 全量 + 增量统一调度 · 断点续传 · 五大组件协同部署</div>
 
 ---
 layout: default
@@ -232,7 +232,7 @@ layout: default
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.8rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">17 种数据源 · 异构全覆盖 · 所有 Source 库均可作为 Sink 目标</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">17 种数据源 · 异构全覆盖 · 所有 Source 库均可作为 Sink 目标</div>
 
 ---
 layout: default
@@ -276,9 +276,7 @@ layout: default
 
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.7rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.85rem">
-<strong>定时调度</strong>：所有模式均支持 cron 调度与<strong>交易日历</strong>（非交易日自动暂停），满足金融行业合规要求。
-</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">定时调度：所有模式均支持 cron 调度与交易日历，非交易日自动暂停</div>
 
 <style>
 .flow-diagram-wrap .mermaid {
@@ -351,7 +349,7 @@ flowchart TD
 
 </div>
 
-<div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0.5rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.8rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; z-index: 6">按操作类型复用 statement · 达批次执行 · 文件结束提交 checkpoint</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; z-index: 6">按操作类型复用 statement · 批满即执行 · 文件结束提交 checkpoint</div>
 
 ---
 layout: default
@@ -403,7 +401,7 @@ flowchart TD
 
 </div>
 
-<div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0.5rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.8rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; z-index: 6">4M 缓存阈值落盘 · 0.5s 超时兜底发送 · ACK 后删除源端文件</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600; z-index: 6">4M 缓存阈值落盘 · 0.5s 超时兜底发送 · ACK 后删除源端文件</div>
 
 ---
 layout: default
@@ -422,11 +420,11 @@ layout: default
 
 **④ 同步配置**：全量并发数、增量批次大小、网络压缩
 
-**⑤ 其它配置**：告警绑定、分组归属、备注信息
+**⑤ 其他配置**：告警绑定、分组归属、备注信息
 
 </div>
 <div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
-  <img src="/fzs-create-link.png" alt="链路配置向导" style="width: 100%; display: block" />
+  <img src="/fzs-create-link.webp" alt="链路配置向导" style="width: 100%; display: block" />
 </div>
 </div>
 
@@ -443,7 +441,7 @@ layout: default
 
 **增量累计**：统计 INSERT / UPDATE / DELETE / DDL 在抓取端与装载端的累计行数，两端对比可发现积压或数据丢失
 
-**实时延时**：独立展示抓取端与装载端的秒级延时，快速定位瓶颈位于网络还是目标库
+**实时延时**：独立展示抓取端与装载端的秒级延时，快速定位瓶颈在网络层还是目标库
 
 **全量统计**：显示全量阶段各表的迁移进度、已同步行数与 QPS
 
@@ -453,7 +451,7 @@ layout: default
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.82rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">抓取端 / 装载端双端延时独立监控 · 秒级定位瓶颈 · 全量 QPS 实时可见</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">抓取端 / 装载端双端延时独立监控 · 秒级定位瓶颈 · 全量 QPS 实时可见</div>
 
 ---
 layout: default
@@ -477,19 +475,17 @@ layout: default
 
 <div class="flex gap-3 items-start">
   <span class="shrink-0" style="width: 0.6rem; height: 0.6rem; background: var(--s-blue); margin-top: 0.3rem; display: inline-block"></span>
-  <div><strong>空闲告警</strong>：源端在阈值时间内无数据变化时触发，检测业务停摆或上游采集失效</div>
+  <div><strong>空闲告警</strong>：源端在阈值时间内无数据变化时触发，检测业务静默或上游采集失效</div>
 </div>
 
 </div>
 </div>
 <div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
-  <img src="/fzs-alert-settings.png" alt="告警管理" style="width: 100%; display: block" />
+  <img src="/fzs-alert-settings.webp" alt="告警管理" style="width: 100%; display: block" />
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.85rem">
-<strong>通知渠道</strong>：Webhook（企微 / 钉钉 / 飞书 / 短信平台）+ SMTP 邮件
-</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">通知渠道：Webhook（企微 / 钉钉 / 飞书 / 短信平台）+ SMTP 邮件</div>
 
 ---
 layout: default
@@ -512,7 +508,7 @@ FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 2. 若链路运行中断 → 自动恢复同步（可配置）
 3. 所有恢复动作均写入系统日志，可追溯
 
-<p style="color: var(--muted); font-size: 0.88rem; margin-top: 0.75rem; line-height: 1.6">实现链路级故障的无人值守自恢复，降低人工介入成本。</p>
+<p style="color: var(--muted); font-size: 0.88rem; margin-top: 0.75rem; line-height: 1.6">实现链路级故障的无人值守自恢复，降低人工介入成本</p>
 
 </div>
 <div>
@@ -525,7 +521,7 @@ FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 | **主备切换** | 交换源端与备端角色，链路反向同步 |
 | **灾备切换** | 一键将容灾备库提升为主库，RTO < 10 分钟 |
 
-以上操作均可通过 Web UI 或 AI 助手完成，操作前会要求二次确认。
+以上操作均可通过 Web UI 或 AI 助手完成，均需二次确认。
 
 
 
@@ -547,17 +543,17 @@ layout: default
 
 **快速行数比对**：并行查询源端与备端同名表的行数，秒级获取差异，即时判断是否一致
 
-**逐行内容差异校验**：SQL 层对比实际数据，生成差异 Excel 文件供下载，精确定位不一致行；结果可由 AI 助手汇报摘要
+**逐行内容差异校验**：SQL 层对比实际数据，生成差异 Excel 文件供下载，精确定位不一致行；AI 助手可汇总差异摘要
 
 <p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem">支持：Oracle、MySQL、PostgreSQL、GaussDB、达梦、金仓、openGauss、TiDB、TDSQL、StarRocks、Doris、Vastbase、PolarDB、SUNDB</p>
 
 </div>
 <div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
-  <img src="/data-verification.png" alt="数据比对与校验" style="width: 100%; display: block" />
+  <img src="/data-verification.webp" alt="数据比对与校验" style="width: 100%; display: block" />
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.82rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">行数比对秒级完成 · 差异明细导出 Excel · 支持 14 种数据库</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">行数比对秒级完成 · 差异明细导出 Excel · 支持 14 种数据库</div>
 
 ---
 layout: default
@@ -581,18 +577,18 @@ layout: default
 </div>
 <div style="flex: 1; display: grid; grid-template-columns: 45fr 55fr; grid-template-rows: auto auto; gap: 0.75rem">
   <div style="border: 1px solid var(--divider); overflow: hidden; grid-column: 1; grid-row: 1 / 3">
-    <img src="/ai-chatbox.png" alt="AI 对话" style="width: 100%; display: block" />
+    <img src="/ai-chatbox.webp" alt="AI 对话" style="width: 100%; display: block" />
   </div>
   <div style="border: 1px solid var(--divider); overflow: hidden; grid-column: 2; grid-row: 1">
-    <img src="/ai-llm-config.png" alt="AI 模型配置" style="width: 100%; display: block" />
+    <img src="/ai-llm-config.webp" alt="AI 模型配置" style="width: 100%; display: block" />
   </div>
   <div style="border: 1px solid var(--divider); overflow: hidden; grid-column: 2; grid-row: 2">
-    <img src="/ai-llm-config-dialog.png" alt="添加 AI 配置" style="width: 100%; display: block" />
+    <img src="/ai-llm-config-dialog.webp" alt="添加 AI 配置" style="width: 100%; display: block" />
   </div>
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.82rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">支持私有部署 · 适配内网隔离 · 权限约束 · 高风险操作需二次确认</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">支持私有部署 · 支持内网隔离 · 权限约束 · 高风险操作需二次确认</div>
 
 ---
 layout: default
@@ -615,7 +611,7 @@ layout: default
 </div>
 
 <div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
-  <img src="/fzs-main.png" alt="FZS 管理控制台" style="width: 100%; display: block" />
+  <img src="/fzs-main.webp" alt="FZS 管理控制台" style="width: 100%; display: block" />
 </div>
 
 </div>
@@ -628,7 +624,7 @@ layout: default
 
 # 性能测试
 
-<img src="/perf-test.png" alt="性能测试报告" style="display: block; max-width: 100%; max-height: 380px; border: 1px solid var(--divider)" />
+<img src="/perf-test.webp" alt="性能测试报告" style="display: block; max-width: 100%; max-height: 380px; border: 1px solid var(--divider)" />
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">部署模式：中间机 · CPU 16c 海光 Dhyana · MEM 32 GB · 1–4 与竞品齐平 · 5–6 优于竞品</div>
 
@@ -784,7 +780,7 @@ layout: default
 # 山西证券 · UF30 信创 OTC 逻辑部署
 
 <p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">微服务同城双活 · 数据库域名连接透明切换 · FZS 跨机房实时同步</p>
-<img src="/case-shanxi-arch.png" alt="山西证券 UF30 信创 OTC 逻辑部署图" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
+<img src="/case-shanxi-arch.webp" alt="山西证券 UF30 信创 OTC 逻辑部署图" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 微服务同城双活 · 数据库域名连接 · 全局负载均衡（2 / 3）</div>
 
@@ -795,7 +791,7 @@ layout: default
 # 山西证券 · 上线切换任务分解
 
 <p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">准备阶段 · 周五清算前 · 标黄行为九桥同步检查项（GAUSS-GAUSS / GAUSS-ORACLE）</p>
-<img src="/case-shanxi-checklist.png" alt="山西证券上线切换任务清单" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
+<img src="/case-shanxi-checklist.webp" alt="山西证券上线切换任务清单" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 九桥同步检查项：GAUSS-GAUSS / GAUSS-ORACLE（3 / 3）</div>
 
@@ -836,7 +832,7 @@ layout: default
     </div>
     <div style="background: var(--brand-pale); border: 1px solid var(--divider); padding: 0.45rem 1.1rem">
       <div style="font-size: 0.82rem; font-weight: 600; color: var(--ink)">数据库无关</div>
-      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">方案可平替为任意数据库</div>
+      <div style="font-size: 0.68rem; color: var(--muted); margin-top: 0.12rem">方案适用于任意数据库</div>
     </div>
   </div>
 
@@ -851,7 +847,7 @@ layout: default
 # 贵阳农商行 · 生产数据库信创部署方案
 
 <p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">主+备+灾备+管控+逃生库 · CDC 实时同步 · 鲲鹏 Arm · 麒麟 v10</p>
-<img src="/case-guiyang-arch.png" alt="贵阳农商行信创部署方案架构" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
+<img src="/case-guiyang-arch.webp" alt="贵阳农商行信创部署方案架构" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 贵阳农商行 · 主副中心 CDC 同步架构（2 / 2）</div>
 
@@ -862,7 +858,7 @@ title: 感谢聆听
 ---
 
 <div style="position: absolute; inset: 0; background: var(--brand); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem">
-  <img src="/logo.png" alt="九桥同步" class="h-14" style="filter: brightness(0) invert(1); opacity: 0.92" />
+  <img src="/logo.webp" alt="九桥同步" class="h-14" style="filter: brightness(0) invert(1); opacity: 0.92" />
   <div style="width: 2.5rem; height: 1px; background: oklch(70% 0.06 25)"></div>
   <h2 style="font-size: 2rem; font-weight: 600; color: oklch(97% 0.005 30); letter-spacing: 0.02em; margin: 0">感谢聆听</h2>
   <div style="width: 2.5rem; height: 1px; background: oklch(70% 0.06 25)"></div>
