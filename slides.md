@@ -70,7 +70,7 @@ layout: default
 
 - **同步性能高**：捕获分析数据库重做日志 redo，数据高效实时同步
 - **范围覆盖广**：主流商业库 + 国产信创库 / 数据湖仓 / 数据中间件
-- **运维成本低**：无需 CLI，UI / UX 简洁高效易用直观
+- **运维成本低**：无需 CLI，Web UI 简洁高效直观易用
 - **智能体加持**：AI 助理赋能用户，使用自然语言实现运维操作
 
 </div>
@@ -102,8 +102,6 @@ layout: default
 
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">可作为数据源（Source）</p>
 
-通过 CDC 日志抓取，覆盖商业库与国产信创库：
-
 <div class="text-sm mt-2">
 
 - Oracle DB
@@ -124,8 +122,6 @@ layout: default
 <div>
 
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">可作为数据目标（Sink）</p>
-
-所有 Source 库均可作为目标；额外支持专属 Sink 目标：
 
 <div class="text-sm mt-2">
 
@@ -349,7 +345,7 @@ layout: default
 <div class="flex gap-8 mt-3 items-start">
 <div class="space-y-2 text-sm" style="flex: 0 0 42%">
 
-**① 基础信息**：选择源端节点 → 备端节点，填写链路名称与描述
+**① 基础信息**：选择源端节点 → 备端节点
 
 **② 同步对象**：用户级 / 表级 / 列级；支持名称映射、类型映射、列过滤（WHERE 条件）及备端加列
 
@@ -445,8 +441,6 @@ FZS Daemon 每 **30 秒**检测所有配置了 Agent 的节点是否可达：
 2. 若链路运行中断 → 自动恢复同步（可配置）
 3. 所有恢复动作均写入系统日志，可追溯
 
-<p style="color: var(--muted); font-size: 0.88rem; margin-top: 0.75rem; line-height: 1.6">实现链路级故障的无人值守自恢复，降低人工介入成本</p>
-
 </div>
 <div>
 
@@ -477,9 +471,9 @@ layout: default
 
 通过 **FZS Query**（独立 Java 服务）提供两层验证：
 
-**快速行数比对**：并行查询源端与备端同名表的行数，秒级获取差异，即时判断是否一致
+**快速行数比对**：并行查询源端与备端同名表行数，秒级获取差异
 
-**逐行内容差异校验**：SQL 层对比实际数据，生成差异 Excel 文件供下载，精确定位不一致行；AI 助手可汇总差异摘要
+**逐行内容差异校验**：SQL 层逐行对比，差异导出 Excel，AI 助手可汇总摘要
 
 </div>
 <div style="flex: 1; border: 1px solid var(--divider); overflow: hidden">
@@ -845,13 +839,15 @@ layout: default
 # 现状汇报
 
 - **九桥 FZS 已上线以下业务链路：**
-  - 金玉管家中台：MySQL -> StarRocks
-  - UF20 中间库：Oracle -> StarRocks * 2
-  - 聚源数据库：Oracle -> StarRocks
+  - 金玉管家中台：
+    - Oracle -> StarRocks
+    - MySQL -> StarRocks
+  - 聚源数据库：
+    - Oracle -> StarRocks
+    - Oracle -> OB Oracle（ETF 投顾）
+  - UF 2.0 中间库：Oracle -> StarRocks * 2
   - 机构柜台备库：Oracle -> StarRocks
   - 财富投顾业务：OB Oracle -> StarRocks
-  - 金玉关键中台：Oracle -> StarRocks
-  - 聚源数据库 ETF 投顾：Oracle -> OB Oracle
 - **九桥 FZS AI 助理业务准备试点：**
   - qwen3-8b 本地模型接入
 
