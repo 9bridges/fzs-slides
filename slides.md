@@ -620,86 +620,82 @@ layout: default
 layout: default
 ---
 
-# 典型应用场景
+# 数据集成
 
-<div style="margin: 0 -3.5rem; padding: 1rem 3.5rem 1rem; background: var(--brand); color: oklch(97% 0.005 30)">
-  <div class="flex items-center gap-4">
-    <span style="font-size: 1.8rem; font-weight: 700; opacity: 0.45; font-family: 'Kaiti SC', STKaiti, serif; line-height: 1">01</span>
-    <div>
-      <h3 style="color: oklch(97% 0.005 30); font-weight: 700; font-size: 1rem; margin: 0 0 0.3rem">数据集成</h3>
-      <p style="font-size: 0.88rem; line-height: 1.55; opacity: 0.9; margin: 0">CDC 变更实时写入分析库（StarRocks / Doris）及消息队列（Kafka），T+0 报表与风控模型所需数据秒级就绪，彻底消除批处理等待窗口。</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; align-items: center">
-        <span style="font-size: 0.58rem; opacity: 0.45; letter-spacing: 0.08em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
-        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">中银国际证券</span>
-        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">华安证券</span>
-        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">山西证券</span>
-        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">财通证券</span>
-        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">万联证券</span>
-        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">阜外医院/平安期货</span>
-        <span style="font-size: 0.63rem; background: oklch(100% 0 0 / 0.13); color: oklch(97% 0.005 30); padding: 0.08rem 0.42rem; border: 1px solid oklch(100% 0 0 / 0.22); white-space: nowrap">金融街证券</span>
-      </div>
-    </div>
-    <div style="margin-left: auto; text-align: right; flex-shrink: 0; padding-left: 2rem">
-      <p style="font-size: 0.72rem; opacity: 0.6; margin: 0 0 0.15rem; letter-spacing: 0.06em">报表时效</p>
-      <p style="font-size: 1.6rem; font-weight: 700; margin: 0; font-family: 'Kaiti SC', STKaiti, serif; line-height: 1">T+0</p>
-      <p style="font-size: 0.72rem; opacity: 0.6; margin: 0.25rem 0 0; letter-spacing: 0.06em">无 ETL 批处理窗口</p>
-    </div>
-  </div>
-</div>
+- **需求特点：**
+  - 从业务库中获取实时数据并发送至消息队列或数据湖仓，下游自行消费
+  - 实时性要求分钟级（< 10 min）
+- **所属案例：**
+  - 中银国际证券：Oracle / GaussDB -> Kafka
+  - 华安证券：TDSQL -> Kafka
+  - 山西证券：
+    - Oracle / MySQL -> Kafka
+    - GaussDB -> Oracle
+  - 财通证券：Oracle -> Kafka
+  - 万联证券：Oracle -> Kafka
+  - 阜外医院 / 万联证券 / 平安期货：Oracle -> Kafka
+  - 金融街证券：Oracle / DM / MySQL / OceanBase -> 星环 Event Store (Kafka) / 星环 Inceptor (Hive) / StarRocks
 
-<div class="grid grid-cols-3 mt-0" style="gap: 0">
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">典型应用场景（1 / 4）</div>
 
-<div class="p-4" style="border: 1px solid var(--divider); border-top: none; border-right: none">
-<div class="flex items-baseline gap-2 mb-2">
-<span style="color: var(--muted); font-size: 1rem; font-weight: 700; line-height: 1">02</span>
-<h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">实时容灾</h3>
-</div>
-<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">数据实时同步至备库，增量延时 &lt; 1 秒，RPO ≈ 0；故障时 Web UI 一键切换备库，RTO &lt; 10 分钟。</p>
-<div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.45rem; align-items: center">
-  <span style="font-size: 0.58rem; color: var(--muted); opacity: 0.6; letter-spacing: 0.08em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">民生/盛达/晨鑫/东方汇金期货</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中信/金瑞/国证期货</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">三立/华源期货</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">云南信托/联储证券/橡华国际</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">科蓝软件</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">山西证券</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">浙商期货</span>
-</div>
-</div>
+---
+layout: default
+---
 
-<div class="p-4" style="border: 1px solid var(--divider); border-top: none; border-right: none">
-<div class="flex items-baseline gap-2 mb-2">
-<span style="color: var(--muted); font-size: 1rem; font-weight: 700; line-height: 1">03</span>
-<h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">信创迁移</h3>
-</div>
-<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">Oracle → 达梦 / 金仓 / openGauss 全链路覆盖，全量完成后自动切入增量同步，业务切换停机窗口可缩短至分钟级。</p>
-<div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.45rem; align-items: center">
-  <span style="font-size: 0.58rem; color: var(--muted); opacity: 0.6; letter-spacing: 0.08em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中信/金瑞/五矿/中盛/创元期货</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">南华期货</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">科蓝软件</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">宁证期货</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">山西证券</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中邮证券</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">国投安信期货</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">长城基金</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">混沌天成期货</span>
-</div>
-</div>
+# 数据容灾
 
-<div class="p-4" style="border: 1px solid var(--divider); border-top: none">
-<div class="flex items-baseline gap-2 mb-2">
-<span style="color: var(--muted); font-size: 1rem; font-weight: 700; line-height: 1">04</span>
-<h3 class="font-bold" style="color: var(--ink); font-size: 0.95rem">数据分发</h3>
-</div>
-<p style="font-size: 0.83rem; line-height: 1.6; color: var(--muted)">一次 CDC 抓取驱动多条下游链路，变更数据同时分发至报表库、缓存、消息队列，源库读压力不随消费方数量增加。</p>
-<div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.45rem; align-items: center">
-  <span style="font-size: 0.58rem; color: var(--muted); opacity: 0.6; letter-spacing: 0.07em; margin-right: 0.15rem; flex-shrink: 0; white-space: nowrap">代表客户</span>
-  <span style="font-size: 0.63rem; color: var(--ink); background: var(--brand-pale); padding: 0.08rem 0.42rem; border: 1px solid var(--divider); white-space: nowrap">中国人寿财险</span>
-</div>
-</div>
+- **需求特点：**
+  - 数据零丢失：RPO = 0
+  - 恢复窗口短：RTO 分钟级别
+  - 支持灾备切换
+- **所属案例：**
+  - 民生期货 / 盛达期货 / 晨鑫期货 / 东方汇金期货：Oracle -> Oracle 异地容灾
+  - 中信期货 / 金瑞期货 / 国证期货：DM -> DM 数据容灾
+  - 三立期货 / 华源期货：DM -> Oracle 数据容灾
+  - 云南信托 / 联储证券 / 横华国际：MySQL -> MySQL 异地容灾
+  - 科蓝软件：SUNDB -> SUNDB 两地三中心
+  - 山西证券：GaussDB -> GaussDB 同城容灾
+  - 浙商期货：DM -> DM, OB MySQL -> OB MySQL 数据容灾
 
-</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">典型应用场景（2 / 4）</div>
+
+---
+layout: default
+---
+
+# 数据迁移
+
+- **需求特点：**
+  - 信创需求占大多数，旧业务系统数据迁移至信创库
+  - 在指定割接窗口之内完成全量数据迁移，对数据迁移性能要求高
+  - 采用低风险的信创 + 非信创环境双轨运行机制，对数据同步稳定性要求高
+- **所属案例：**
+  - 中信期货 / 金瑞期货 / 五矿期货 / 中盛期货 / 创元期货：Oracle -> DM
+  - 南华期货：Oracle -> TDSQL
+  - 科蓝软件：Oracle -> SUNDB
+  - 宁证期货：Oracle -> LightDB
+  - 山西证券 / 中邮证券：Oracle -> GaussDB
+  - 国投安信期货：MySQL -> MySQL
+  - 长城基金：Oracle -> OceanBase Oracle
+  - 混沌天成期货：Oracle -> 海量 Vastbase
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">典型应用场景（3 / 4）</div>
+
+---
+layout: default
+---
+
+# 数据分发
+
+- **需求特点：**
+  - 从主业务系统将数据分发到其他业务系统，供下游消费
+  - 全量结束后需持续同步增量数据
+  - 稳定性要求高，下游数据随时可用
+- **所属案例：**
+  - 中国人寿财险：Oracle -> TiDB
+  - 中国人寿财险：TiDB -> DM
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">典型应用场景（4 / 4）</div>
 
 ---
 layout: default
