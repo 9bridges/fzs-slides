@@ -39,19 +39,19 @@ layout: default
 
 <div class="grid grid-cols-2 gap-x-14 gap-y-4 mt-3" style="font-size: 0.92rem">
 <div class="space-y-3">
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">01</span><span>什么是 FZS？</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">01</span><span>FZS 是什么？</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">02</span><span>支持的数据库链路</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">03</span><span>三种同步模式</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">04</span><span>数据同步原理</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">05</span><span>管理控制台一览</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">06</span><span>链路配置 · 监控 · 告警</span></div>
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">07</span><span>高可用 · 自动容灾</span></div>
 </div>
 <div class="space-y-3">
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">08</span><span>数据比对与校验</span></div>
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">09</span><span>AI 助手</span></div>
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">10</span><span>性能测试 · 信创认证</span></div>
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">13</span><span>典型应用场景 · 案例分享</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">07</span><span>高可用 · 数据比对 · AI 助手</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">08</span><span>性能测试 · 信创认证</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">09</span><span>典型应用场景</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">10</span><span>案例分享</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">11</span><span>现状汇报</span></div>
 </div>
 </div>
 
@@ -70,7 +70,7 @@ layout: default
 
 - **同步性能高**：捕获分析数据库重做日志 redo，数据高效实时同步
 - **范围覆盖广**：主流商业库 + 国产信创库 / 数据湖仓 / 数据中间件
-- **运维成本低**：UI 简单易用直观，软件支持容器化一键部署
+- **运维成本低**：无需 CLI，UI / UX 简洁高效易用直观
 - **智能体加持**：AI 助理赋能用户，使用自然语言实现运维操作
 
 </div>
@@ -142,7 +142,7 @@ layout: default
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">17 种数据源 · 异构全覆盖 · 所有 Source 库均可作为 Sink 目标</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">20+ 种数据源 · 异构全覆盖 · 所有 Source 库均可作为 Sink 目标</div>
 
 ---
 layout: default
@@ -634,7 +634,7 @@ layout: default
   - 财通证券：Oracle -> Kafka
   - 万联证券：Oracle -> Kafka
   - 阜外医院 / 万联证券 / 平安期货：Oracle -> Kafka
-  - 金融街证券：Oracle / DM / MySQL / OceanBase -> 星环 Event Store (Kafka) / 星环 Inceptor (Hive) / StarRocks
+  <!-- - 金融街证券：Oracle / DM / MySQL / OceanBase -> 星环 Event Store (Kafka) / 星环 Inceptor (Hive) / StarRocks -->
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">典型应用场景（1 / 4）</div>
 
@@ -838,6 +838,25 @@ layout: default
 <img src="/case-guiyang-arch.webp" alt="贵阳农商行信创部署方案架构" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 贵阳农商行 · 主副中心 CDC 同步架构（2 / 2）</div>
+
+---
+layout: default
+---
+
+# 现状汇报
+
+- **九桥 FZS 已上线以下业务链路：**
+  - 金玉管家中台：MySQL -> StarRocks
+  - UF20 中间库：Oracle -> StarRocks * 2
+  - 聚源数据库：Oracle -> StarRocks
+  - 机构柜台备库：Oracle -> StarRocks
+  - 财富投顾业务：OB Oracle -> StarRocks
+  - 金玉关键中台：Oracle -> StarRocks
+  - 聚源数据库 ETF 投顾：Oracle -> OB Oracle
+- **九桥 FZS AI 助理业务准备试点：**
+  - qwen3-8b 本地模型接入
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">现状汇报 · 金融街证券</div>
 
 ---
 layout: center
