@@ -481,7 +481,7 @@ layout: default
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">行数比对秒级完成 · 差异明细导出 Excel · 支持 14 种数据库</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">行数比对秒级完成 · 差异明细导出 Excel</div>
 
 ---
 layout: default
@@ -617,13 +617,13 @@ layout: default
 
 - **需求特点：**
   - 从业务库中获取实时数据并发送至消息队列或数据湖仓，下游自行消费
-  - 实时性要求分钟级（< 10 min）
+  - 实时性要求秒级（< 10 sec）
 - **所属案例：**
   - 中银国际证券：Oracle / GaussDB -> Kafka
   - 华安证券：TDSQL -> Kafka
   - 山西证券：
     - Oracle / MySQL -> Kafka
-    - GaussDB -> Oracle
+    - GaussDB -> Oracle / Doris
   - 财通证券：Oracle -> Kafka
   - 万联证券：Oracle -> Kafka
   - 阜外医院 / 万联证券 / 平安期货：Oracle -> Kafka
@@ -714,7 +714,7 @@ layout: default
     </div>
     <div style="display: grid; grid-template-columns: 5.5rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
       <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">UF 3.0</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> Oracle</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> Oracle / Doris</span>
       <span style="font-size: 0.62rem; color: var(--muted)">异构同步</span>
       <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
     </div>
