@@ -619,14 +619,15 @@ layout: default
   - 从业务库中获取实时数据并发送至消息队列或数据湖仓，下游自行消费
   - 实时性要求秒级（< 10 sec）
 - **所属案例：**
-  - 中银国际证券：Oracle / GaussDB -> Kafka
-  - 华安证券：TDSQL -> Kafka
   - 山西证券：
     - Oracle / MySQL -> Kafka
     - GaussDB -> Oracle / Doris
-  - 财通证券：Oracle -> Kafka
-  - 万联证券：Oracle -> Kafka
-  - 阜外医院 / 万联证券 / 平安期货：Oracle -> Kafka
+  - 财通证券：
+    - Oracle / MySQL / OceanBase -> Kafka
+    - Oracle / MySQL / OceanBase -> Doris
+  - 中银国际证券：Oracle / GaussDB -> Kafka
+  - 华安证券：TDSQL -> Kafka
+  - 万联证券 / 阜外医院 / 平安期货 / 创元期货：Oracle -> Kafka
   <!-- - 金融街证券：Oracle / DM / MySQL / OceanBase -> 星环 Event Store (Kafka) / 星环 Inceptor (Hive) / StarRocks -->
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">典型应用场景（1 / 4）</div>
