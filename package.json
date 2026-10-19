@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "slidev --open",
     "build": "node scripts/build-decks.mjs",
-    "export": "slidev export"
+    "export": "node scripts/export-deck.mjs"
   },
   "dependencies": {
     "@slidev/cli": "^0.50.0",

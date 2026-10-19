@@ -4,3 +4,4 @@ dist/
 .slidev/
 .DS_Store
 export/
+*-export.pdf
