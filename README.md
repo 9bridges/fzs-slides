@@ -7,15 +7,16 @@ Audience: enterprise financial institution IT directors, architects, and procure
 
 ```bash
 npm install
-npm run dev        # dev server with hot reload → http://localhost:3030
-npm run build      # static export to dist/
-npm run export     # PDF export
+npm run dev -- huajin-202610.md    # dev server with hot reload → http://localhost:3030
+npm run build                      # 构建全部 deck 到 dist/（两份都产出）
+npm run export -- jinrongjie-202606.md   # 单份 PDF 导出（按需）
 ```
 
 ## Project Structure
 
 ```
-slides.md          # all slide content (single source of truth)
+jinrongjie-202606.md  # 金融街版 deck（→ /jinrongjie-202606/）
+huajin-202610.md      # 华金版 deck（→ /huajin-202610/）
 global-top.vue     # global Vue layout / CSS variable definitions
 DESIGN.md          # design system spec (colors, typography, creative direction)
 PRODUCT.md         # product context, audience, brand voice
@@ -54,4 +55,4 @@ Colors and typography are defined in `DESIGN.md` and applied via CSS custom prop
 
 ## Adding Screenshots
 
-Drop new screenshots into `public/` and reference them in `slides.md` as `/filename.png`.
+Drop new screenshots into `public/` and reference them in the deck `.md` as `/filename.png`.

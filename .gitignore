@@ -3,3 +3,4 @@ dist/
 .output/
 .slidev/
 .DS_Store
+export/
