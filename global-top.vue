@@ -4,11 +4,12 @@
     src="/logo.webp"
     alt="九桥同步"
     class="absolute top-4 right-6 h-8 z-10 pointer-events-none"
+    :style="$nav.currentLayout === 'section' ? 'filter: brightness(0) invert(1); opacity: 0.92' : ''"
   />
   <span
     v-if="$nav.currentPage !== 1 && $nav.currentPage !== $nav.total"
     class="absolute bottom-3 z-10 select-none"
-    style="left: 3.5rem; font-size: 0.7rem; color: oklch(65% 0.010 35); letter-spacing: 0.04em"
+    :style="{ left: '3.5rem', fontSize: '0.7rem', color: $nav.currentLayout === 'section' ? 'oklch(82% 0.04 25)' : 'oklch(65% 0.010 35)', letterSpacing: '0.04em' }"
   >{{ $nav.currentPage - 1 }}</span>
 </template>
 
@@ -80,6 +81,57 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
   line-height: 1.3;
   border: none;
+}
+
+/* Section divider (章节页).
+   Slidev's built-in `section` layout ships a dark ground, which breaks the
+   paper-white + crimson-band system used everywhere else. Restate it here:
+   same ground, brand-red heading, a short rule above it. */
+.slidev-layout.section {
+  background-color: var(--brand) !important;
+  color: oklch(97% 0.005 30) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0 3.5rem;
+}
+
+.slidev-layout.section h1 {
+  background: none !important;
+  color: oklch(97% 0.005 30) !important;
+  font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  padding: 0;
+  margin: 0 0 0.9rem;
+  border: none;
+}
+
+.slidev-layout.section h1::before {
+  content: '';
+  display: block;
+  width: 3.4rem;
+  height: 3px;
+  background: oklch(70% 0.06 25);
+  margin-bottom: 1.1rem;
+}
+
+/* Inline code.
+   Slidev derives `--slidev-code-background` from the light/dark scheme; under a
+   dark browser the span goes near-black while the text keeps --ink, so the text
+   disappears. Pin both colors here: the deck is light-only by design. */
+.slidev-layout :not(pre) > code {
+  background: var(--brand-pale) !important;
+  color: var(--brand-deep) !important;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.86em;
+  font-weight: 400;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
 }
 
 /* Table styles: headers carry the brand color */
