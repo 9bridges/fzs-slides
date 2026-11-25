@@ -13,6 +13,7 @@ import { rmSync, existsSync, writeFileSync } from 'node:fs'
 const DECKS = [
   { entry: 'jinrongjie-202606.md', dir: 'jinrongjie-202606', title: '金融街证券 · 产品介绍', note: '2026-06' },
   { entry: 'huajin-202610.md', dir: 'huajin-202610', title: '华金证券 · 产品介绍与 OceanBase 同步原理', note: '2026-10' },
+  { entry: 'jinrongjie-202611.md', dir: 'jinrongjie-202611', title: '金融街证券 · UF3.0 信创升级数据库同步方案', note: '2026-11' },
 ]
 
 if (existsSync('dist')) rmSync('dist', { recursive: true, force: true })

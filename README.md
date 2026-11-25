@@ -7,7 +7,7 @@ Audience: enterprise financial institution IT directors, architects, and procure
 
 ```bash
 npm install
-npm run dev -- huajin-202610.md    # dev server with hot reload → http://localhost:3030
+npm run dev -- jinrongjie-202611.md   # dev server with hot reload → http://localhost:3030
 npm run build                      # 构建全部 deck 到 dist/（两份都产出）
 npm run export -- jinrongjie-202606.md   # 单份 PDF 导出（按需）
 ```
@@ -15,8 +15,9 @@ npm run export -- jinrongjie-202606.md   # 单份 PDF 导出（按需）
 ## Project Structure
 
 ```
-jinrongjie-202606.md  # 金融街版 deck（→ /jinrongjie-202606/）
-huajin-202610.md      # 华金版 deck（→ /huajin-202610/）
+jinrongjie-202606.md  # 金融街版 deck（产品介绍，→ /jinrongjie-202606/）
+huajin-202610.md      # 华金版 deck（产品介绍 + OceanBase 原理，→ /huajin-202610/）
+jinrongjie-202611.md  # 金融街 · UF3.0 信创升级数据库同步方案（→ /jinrongjie-202611/）
 global-top.vue     # global Vue layout / CSS variable definitions
 DESIGN.md          # design system spec (colors, typography, creative direction)
 PRODUCT.md         # product context, audience, brand voice
