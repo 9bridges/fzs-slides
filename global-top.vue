@@ -160,6 +160,19 @@ h1, h2, h3 {
   background-color: var(--brand-pale);
 }
 
+/* Compact tables on diagram slides: keep the diagram dominant. */
+.slidev-layout table.topo-table {
+  font-size: 0.68rem;
+  line-height: 1.42;
+}
+.slidev-layout table.topo-table thead th {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.7rem;
+}
+.slidev-layout table.topo-table tbody td {
+  padding: 0.26rem 0.7rem;
+}
+
 /* Keep the top-right Slidev goto/toc drawer hidden during demos. */
 #slidev-goto-dialog {
   display: none !important;

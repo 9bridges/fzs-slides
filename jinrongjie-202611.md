@@ -872,10 +872,10 @@ layout: default
 
 <div class="grid grid-cols-2 gap-10 mt-3">
 <div>
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">正向：信创库 → 灾备 / 采集库</p>
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">正向：信创库 → 温备库 / 采集库 / 异地灾备</p>
 <ul class="text-sm mt-2 space-y-2">
 <li>以<strong>信创库（OceanBase）为源</strong>，日志级增量捕获</li>
-<li>一源三目标：同城灾备、异地灾备、采集库</li>
+<li>一源三目标：温备库、采集库、异地灾备</li>
 <li>源端只读日志，不侵入业务表</li>
 </ul>
 </div>
@@ -1213,7 +1213,7 @@ layout: default
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">与"数据库自带主备"的区别</p>
 <ul style="font-size: 0.84rem; line-height: 1.65" class="space-y-2">
 <li>自带主备：同构、同版本、由数据库厂商实现，跨库/跨版本不可用</li>
-<li>FZS：跨版本、跨站点，可同时服务同城灾备、异地灾备与采集库供数</li>
+<li>FZS：跨版本、跨站点，可同时服务同机房温备、异地灾备与采集库供数</li>
 <li>自带主备：切换通常需要 DBA 介入；FZS 提供一键方向反转与灾备自动接管</li>
 <li>FZS 额外提供<strong>数据比对</strong>，可证明目标端数据一致</li>
 </ul>
@@ -1273,7 +1273,7 @@ layout: default
 <div style="border:1px solid var(--divider); padding:1rem 1.1rem">
 <p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">本方案覆盖</p>
 <ul style="font-size:.86rem; line-height:1.85; margin:0">
-<li>以<strong>信创库（OceanBase）为源</strong>，向同城灾备 / 异地灾备 / 采集库实时同步</li>
+<li>以<strong>信创库（OceanBase）为源</strong>，向温备库、采集库与异地灾备实时同步</li>
 <li>灾备接管：故障时按场景 A / B / C 切换</li>
 <li>信创库与各同步端之间的校验、监控与告警</li>
 </ul>
@@ -1327,7 +1327,7 @@ layout: default
 <tbody>
 <tr><td>管理区（或生产中心）</td><td>控制面三节点：Web Server 组 + 控制台 + 巡检</td><td>三节点共享存储，故障自动漂移</td></tr>
 <tr><td>生产中心</td><td>源端 Agent</td><td>中间机形态时部署在中间机</td></tr>
-<tr><td>同城灾备 / 异地灾备</td><td>目标端 Agent</td><td>异地分离时两端各一套</td></tr>
+<tr><td>同机房温备 / 异地灾备</td><td>目标端 Agent</td><td>异地分离时两端各一套</td></tr>
 <tr><td>采集库</td><td>目标端 Agent</td><td>供数链路单独限速</td></tr>
 </tbody>
 </table>
@@ -1339,46 +1339,96 @@ layout: default
 
 # 信创库侧的拓扑与任务链
 
-
-<div class="flow-diagram-wrap ob-fig" style="width: calc(100% - 3rem); margin: 0.2rem 1.5rem 0;">
-
-```mermaid
-%%{init: {'theme':'base','flowchart': {'nodeSpacing': 16, 'rankSpacing': 44, 'padding': 8, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#fbf7f6','primaryTextColor':'#1c1917','primaryBorderColor':'#d6cfcb','lineColor':'#b23a2c','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'13px','clusterBkg':'#f5f1ef','clusterBorder':'#ddd3cd','titleColor':'#6b625c'}}}%%
-flowchart LR
-  subgraph S1["同机房"]
-    direction TB
-    A["主集群 · 3 节点<br/>生产（主）"]
-    B["温备库 · 1 节点<br/>待接管"]
-  end
-  subgraph S2["同城"]
-    direction TB
-    C["采集库 · 1 节点<br/>下游供数"]
-  end
-  subgraph S3["异地"]
-    D["灾备库 · 1 节点<br/>区域接管"]
-  end
-  A -->|九桥同步| B
-  A -->|九桥同步| C
-  C -->|九桥同步| D
-  B -.->|增量 · 切温备时启动| C
-```
-
+<div style="margin: 0.1rem 0 0">
+  <TopologyDiagram scenario="normal" />
 </div>
 
-<p style="font-size:0.74rem; color:var(--muted); margin:0.1rem 0 0.35rem">连线为业务表同步；应用专用通道（极速交易、行情复制等）不在链路内。</p>
+<p style="font-size:0.74rem; color:var(--muted); margin:0.22rem 0 0.35rem">连线为业务表同步；应用专用通道（极速交易、行情复制等）不在链路内。</p>
 
-<table class="mt-2">
+<table class="mt-1 topo-table">
 <thead><tr><th style="width:20%">任务</th><th>方向</th><th style="width:26%">启动条件</th></tr></thead>
 <tbody>
 <tr><td>T1 生产同步</td><td>主集群 → 温备库 / 采集库 / 异地灾备（一源三目标）</td><td>常态运行</td></tr>
-<tr><td>T2 同城接管</td><td>温备库 → 采集库 → 异地灾备（串联追平）</td><td>主集群不可用，确认后启动</td></tr>
-<tr><td>T3 异地兜底</td><td>异地灾备 → 采集库（反向补数）</td><td>主集群与温备均不可用</td></tr>
+<tr><td>T2 同机房接管</td><td>温备库 → 采集库 / 异地灾备（一源两目标）</td><td>主集群不可用，场景 A / B</td></tr>
+<tr><td>T3 异地兜底</td><td>异地灾备 → 采集库（反向补数）</td><td>温备不可用，场景 B / C</td></tr>
 </tbody>
 </table>
 
 <p style="font-size:0.76rem; color:var(--muted); margin:0.2rem 0 0">任一时刻只有一个写入源；切换动作即“停上一级、启下一级”。</p>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">信创库 → 同城 / 异地 / 采集库 · 三级任务 · 单一写入源</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">信创库 → 温备 / 采集 / 异地 · 三级任务 · 单一写入源</div>
+---
+layout: default
+---
+
+# 场景 A：主集群宕机 → 温备接管
+
+<ScenarioPath variant="A" />
+
+<div style="width: calc(100% - 1.5rem); margin: 0 auto">
+  <TopologyDiagram scenario="warm" />
+</div>
+
+<table class="mt-1 topo-table">
+<thead><tr><th style="width:16%">项目</th><th>场景 A：主集群宕机，温备接管</th></tr></thead>
+<tbody>
+<tr><td>触发</td><td>主集群不可用</td></tr>
+<tr><td>动作与结果</td><td>温备接管生产；停 T1，启 T2：温备 → 采集 / 灾备</td></tr>
+<tr><td>RPO</td><td>主 → 温备 链路时延</td></tr>
+</tbody>
+</table>
+
+<p style="font-size:0.72rem; color:var(--muted); margin:0.2rem 0 0">A 停在状态 2：温备接管；不进入灾备接管。</p>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">主集群宕机 · 温备接管 · 采集与灾备继续</div>
+---
+layout: default
+---
+
+# 场景 B：主集群宕机 → 温备接管 → 温备宕机 → 灾备接管
+
+<ScenarioPath variant="B" />
+
+<div style="width: calc(100% - 1.5rem); margin: 0 auto">
+  <TopologyDiagram scenario="drB" />
+</div>
+
+<table class="mt-1 topo-table">
+<thead><tr><th style="width:17%">项目</th><th>场景 B：温备接管后也宕机，灾备接管</th></tr></thead>
+<tbody>
+<tr><td>触发</td><td>主集群不可用 → 温备接管 → 温备也宕机</td></tr>
+<tr><td>动作与结果</td><td>灾备接管生产；停 T2，启 T3：灾备 → 采集（反向补数）</td></tr>
+<tr><td>RPO</td><td>温备 → 灾备 链路时延（接管期间）</td></tr>
+</tbody>
+</table>
+
+<p style="font-size:0.72rem; color:var(--muted); margin:0.2rem 0 0">B 经过状态 2 再到状态 3：温备先接管，随后故障，由灾备接手。</p>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">主集群宕机 → 温备接管 → 温备宕机 · 灾备接管</div>
+---
+layout: default
+---
+
+# 场景 C：主集群 + 温备同时宕机 → 灾备接管
+
+<ScenarioPath variant="C" />
+
+<div style="width: calc(100% - 1.5rem); margin: 0 auto">
+  <TopologyDiagram scenario="drC" />
+</div>
+
+<table class="mt-1 topo-table">
+<thead><tr><th style="width:17%">项目</th><th>场景 C：主 + 温备同时宕机，灾备接管</th></tr></thead>
+<tbody>
+<tr><td>触发</td><td>主集群与温备同时不可用（机房整体故障）</td></tr>
+<tr><td>动作与结果</td><td>灾备接管生产；停 T1，启 T3：灾备 → 采集（反向补数）</td></tr>
+<tr><td>RPO</td><td>主 → 灾备 链路时延</td></tr>
+</tbody>
+</table>
+
+<p style="font-size:0.72rem; color:var(--muted); margin:0.2rem 0 0">C 跳过状态 2：主与温备同时故障，灾备直接接手。</p>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">主 + 温备同时宕机 · 跳过温备 · 灾备直接接管</div>
 ---
 layout: default
 ---
@@ -1414,85 +1464,13 @@ layout: default
 layout: default
 ---
 
-# 三个切换场景：切换态拓扑
-
-<div class="grid grid-cols-2 gap-5 mt-0.5">
-<div>
-<p style="font-size:0.72rem; font-weight:700; letter-spacing:.1em; color:oklch(97% .005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .3rem">A 切同城温备 · 温备接管</p>
-<div class="flow-diagram-wrap ob-fig">
-
-```mermaid
-%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 30, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#fbf7f6','primaryTextColor':'#1c1917','primaryBorderColor':'#d6cfcb','lineColor':'#b23a2c','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px','clusterBkg':'#f5f1ef','clusterBorder':'#ddd3cd','titleColor':'#6b625c'}}}%%
-flowchart LR
-  subgraph L1["同机房"]
-    A["主集群 3 节点<br/>停 T1"]:::down
-    B["温备库 1 节点<br/>接管生产"]
-  end
-  subgraph L2["同城"]
-    C["采集库 1 节点"]
-  end
-  subgraph L3["异地"]
-    D["灾备库 1 节点"]
-  end
-  A -->|停| B
-  B -->|增量| C
-  C -->|增量| D
-  classDef down fill:#f2efec,stroke:#cfc8c2,color:#9a938d
-```
-
-</div>
-</div>
-<div>
-<p style="font-size:0.72rem; font-weight:700; letter-spacing:.1em; color:oklch(97% .005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .3rem">B / C 切异地灾备 · 异地接管</p>
-<div class="flow-diagram-wrap ob-fig">
-
-```mermaid
-%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 30, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#fbf7f6','primaryTextColor':'#1c1917','primaryBorderColor':'#d6cfcb','lineColor':'#b23a2c','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px','clusterBkg':'#f5f1ef','clusterBorder':'#ddd3cd','titleColor':'#6b625c'}}}%%
-flowchart LR
-  subgraph L1["同机房"]
-    A["主集群 3 节点<br/>宕机"]:::down
-    B["温备库 1 节点<br/>宕机"]:::down
-  end
-  subgraph L2["同城"]
-    C["采集库 1 节点"]
-  end
-  subgraph L3["异地"]
-    D["灾备库 1 节点<br/>接管生产"]
-  end
-  D -->|增量 · 反向补数| C
-  A ~~~ D
-  classDef down fill:#f2efec,stroke:#cfc8c2,color:#9a938d
-```
-
-</div>
-</div>
-</div>
-
-<table class="mt-1" style="font-size:0.78rem">
-<thead><tr><th style="width:12%">项目</th><th style="width:27%">场景 A：切同城温备</th><th style="width:30%">场景 B：切异地灾备</th><th>场景 C：直切异地</th></tr></thead>
-<tbody>
-<tr><td>触发</td><td>主集群不可用</td><td>主集群与温备均不可用</td><td>主集群不可用，按预案不经同城</td></tr>
-<tr><td>接管方</td><td>同机房温备库</td><td>异地灾备库</td><td>异地灾备库</td></tr>
-<tr><td>RPO</td><td>A1 链路时延</td><td>串联链路时延（采集库 → 异地）</td><td>同场景 B</td></tr>
-<tr><td>执行动作</td><td>停 T1，启 T2</td><td>停 T1 / T2，启 T3</td><td>同场景 B</td></tr>
-</tbody>
-</table>
-
-<p style="font-size:0.76rem; line-height:1.6; color:var(--muted); margin-top:0.25rem">场景 C 是决策口径：不论同城温备是否可用，都可选择不经同城直切异地；技术动作与 B 相同，差别在触发判定与检查单。</p>
-
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">逐级接管 · 异地兜底 · 直切可作为预案选项</div>
-
----
-layout: default
----
-
 # FZS 的四个动作：建链 · 追平 · 演练 · 接管
 
 <div class="grid grid-cols-4 gap-3 mt-1">
   <div style="border-top:2px solid var(--brand); padding-top:.55rem">
     <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">01</p>
     <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">建链</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">以信创库为源，分别建到同城灾备、异地灾备、采集库的链路。</p></div>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">以信创库为源，建到温备库、采集库与异地灾备的链路。</p></div>
   <div style="border-top:2px solid var(--brand); padding-top:.55rem">
     <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">02</p>
     <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">追平</p>
@@ -1500,7 +1478,7 @@ layout: default
   <div style="border-top:2px solid var(--brand); padding-top:.55rem">
     <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">03</p>
     <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">演练</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">切同城、切异地两级演练；检查单与耗时记录留存。</p></div>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">按 A / B / C 三条路径演练；检查单与耗时记录留存。</p></div>
   <div style="border-top:2px solid var(--brand); padding-top:.55rem">
     <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">04</p>
     <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">接管</p>
@@ -1512,11 +1490,11 @@ layout: default
 </div>
 
 <table class="mt-3" style="font-size:0.74rem; table-layout:fixed">
-<thead><tr><th style="width:9%">动作</th><th style="width:44%">关键操作</th><th style="width:37%">检查项 / 产出</th><th style="width:10%">参考耗时</th></tr></thead>
+<thead><tr><th style="width:9%">动作</th><th style="width:47%">关键操作</th><th style="width:34%">检查项 / 产出</th><th style="width:10%">参考耗时</th></tr></thead>
 <tbody>
-<tr><td>建链</td><td>开通源端账号与端口，取 RootService 列表与 config-url；部署 Agent，按一源三目标建三条链路</td><td>连通性与权限通过；三条链路状态正常；首轮全量完成</td><td>0.5–1 天</td></tr>
+<tr><td>建链</td><td>开通源端账号与端口，取 RootService 列表与 config-url；部署 Agent，按主 → 温备、主 → 采集、主 → 灾备建三条链路</td><td>连通性与权限通过；三条链路正常；首轮全量完成</td><td>0.5–1 天</td></tr>
 <tr><td>追平</td><td>增量持续追平，盯延迟与积压；无唯一键表、大字段表逐表处置</td><td>延迟稳定在秒级、积压归零；抽样行数与内容一致</td><td>1–3 天</td></tr>
-<tr><td>演练</td><td>切同城、切异地两级演练：停 T1 启 T2 / T3，应用指向切换后再切回</td><td>检查单逐项签字；切换耗时与数据结果留档</td><td>每轮 2–4 小时</td></tr>
+<tr><td>演练</td><td>按 A / B / C 三条路径演练：停 T1 启 T2 / T3，应用指向切换后再切回</td><td>检查单逐项签字；切换耗时与数据结果留档</td><td>2–4 小时</td></tr>
 <tr><td>接管</td><td>故障时停上一级、启下一级；恢复后反向补数并复验</td><td>任一时刻单一写入源；切换记录 + 校验报告归档</td><td>分钟级</td></tr>
 </tbody>
 </table>
