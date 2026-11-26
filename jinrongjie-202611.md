@@ -556,13 +556,15 @@ layout: default
   - 恢复窗口短：RTO 分钟级别
   - 支持灾备切换
 - **所属案例：**
-  - 民生期货 / 盛达期货 / 晨鑫期货 / 东方汇金期货：Oracle -> Oracle 异地灾备
+  - 民生期货 / 盛达期货 / 晨鑫期货 / 东方汇金期货 / 东吴基金：Oracle -> Oracle 异地灾备
   - 中信期货 / 金瑞期货 / 国证期货：DM -> DM 数据容灾
   - 三立期货 / 华源期货：DM -> Oracle 数据容灾
   - 云南信托 / 联储证券 / 横华国际：MySQL -> MySQL 异地灾备
   - 科蓝软件：SUNDB -> SUNDB 两地三中心
   - 山西证券：GaussDB -> GaussDB 同城灾备, TA6 基金登记过户 OB Oracle -> OB Oracle 同构灾备
   - 浙商期货：DM -> DM, OB MySQL -> OB MySQL 数据容灾
+  - 长江证券：DM -> DM 数据容灾
+  - 川财证券：DM -> MySQL 数据容灾
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">典型应用场景（1 / 4）</div>
 ---
@@ -579,6 +581,7 @@ layout: default
   - 从业务库中获取实时数据并发送至消息队列或数据湖仓，下游自行消费
   - 实时性要求秒级（< 10 sec）
 - **所属案例：**
+  - 金融街证券：OceanBase / DM -> SelectDB
   - 山西证券：
     - Oracle / MySQL -> Kafka
     - GaussDB -> Oracle / Doris
@@ -599,10 +602,9 @@ layout: default
   - 在指定割接窗口之内完成全量数据迁移，对数据迁移性能要求高
   - 采用低风险的信创 + 非信创环境双轨运行机制，对数据同步稳定性要求高
 - **所属案例：**
-  - 中信期货 / 金瑞期货 / 五矿期货 / 中盛期货 / 创元期货：Oracle -> DM
+  - 中信期货 / 金瑞期货 / 五矿期货 / 中盛期货 / 创元期货 / 宁证期货 / 国金期货 / 大地期货 / 金鹏期货：Oracle -> DM
   - 南华期货：Oracle -> TDSQL
   - 科蓝软件：Oracle -> SUNDB
-  - 宁证期货：Oracle -> LightDB
   - 山西证券 / 中邮证券：Oracle -> GaussDB
   - 国投安信期货：MySQL -> MySQL
   - 长城基金：Oracle -> OceanBase Oracle
@@ -636,63 +638,128 @@ layout: default
   <p style="font-size: 0.88rem; line-height: 1.55; color: var(--ink); margin: 0 0 0.8rem">恒生 UF 3.0 嫁接 GaussDB 的<strong>首个券商行业案例</strong>，核心交易系统信创迁移，业务零中断切换。</p>
 
   <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.35rem">九桥 FZS 业务链路</p>
-  <div style="border: 1px solid var(--divider); margin-bottom: 0.7rem">
+        <div style="border: 1px solid var(--divider); margin-bottom: 0.7rem">
     <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.75rem">
       <span>业务系统</span><span>源端 → 目标端</span><span>同步类型</span><span>归属部门</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">UF 3.0</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> GaussDB</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">实时灾备</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">信息技术部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">UF 3.0</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> GaussDB</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">实时灾备</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">信息技术部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">UF 3.0</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> Oracle / Doris</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">异构同步</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">OTC 账户 / 多金</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> Oracle（当前库）</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">异构同步</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">集中交易</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">实时灾备</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">OTC 账户 / 多金</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">GaussDB <span style="color: var(--brand); font-weight: 700">→</span> Oracle（历史库）</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">异构同步</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">OA 办公</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">达梦 V8 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">信创同步</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">TA6 基金登记过户</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">OB Oracle <span style="color: var(--brand); font-weight: 700">→</span> OB Oracle</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">同构灾备</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">信息技术部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">开户系统</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">MySQL 8.0 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">异构同步</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">新 UF3.0 · SEE 平台</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">MySQL <span style="color: var(--brand); font-weight: 700">→</span> MySQL</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">同构同步</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">信息技术部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">账户系统</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> MySQL 8.0</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">反向回写</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">集中交易</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">实时灾备</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">交易风控</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Kafka 2.7.x</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">实时集成</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">金融科技部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">OA 办公</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">达梦 V8 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">信创同步</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.22rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
-      <span style="font-size: 0.75rem; font-weight: 600; color: var(--ink)">TA6 基金登记过户</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--muted)">OB Oracle <span style="color: var(--brand); font-weight: 700">→</span> OB Oracle</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">同构灾备</span>
-      <span style="font-size: 0.62rem; color: var(--muted)">信息技术部</span>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">开户系统</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">MySQL 8.0 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">异构同步</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">账户系统</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> MySQL 8.0</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">反向回写</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
+      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">交易风控</span>
+      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Kafka 2.7.x</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">实时集成</span>
+      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
     </div>
   </div>
-
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 恒生 UF 3.0 信创升级（1 / 3）</div>
+
+---
+
+# 山西证券 · 部署拓扑
+
+<div style="position:relative; border:1px dashed var(--border); padding:1.15rem .7rem .6rem; background:#faf8f6">
+  <span style="position:absolute; top:.35rem; left:.8rem; font-size:.64rem; letter-spacing:.12em; color:var(--muted); font-weight:700">同机房（生产机房）</span>
+  <div style="display:flex; align-items:center; gap:.55rem">
+    <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.5rem .6rem">
+      <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">源库</p>
+      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">GaussDB · UF 3.0 主<br/>OB Oracle · TA6<br/>MySQL · SEE</div>
+    </div>
+    <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">读日志<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
+    <div style="flex:1.2; border:1px solid var(--brand); background:var(--surface); padding:.5rem .6rem">
+      <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">中间机（1 台）</p>
+      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">Web Server ×1<br/>源端 Agent<br/>目标端 Agent</div>
+    </div>
+    <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">写入<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
+    <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.5rem .6rem">
+      <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">目标库</p>
+      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">GaussDB · UF 3.0 备<br/>Oracle · 当前 / 历史<br/>OB Oracle · TA6 备<br/>MySQL · SEE 备</div>
+    </div>
+  </div>
+</div>
+
+<div style="display:flex; gap:.4rem; margin:.5rem 0 .55rem; flex-wrap:wrap">
+  <span style="font-size:.66rem; padding:.18rem .5rem; border:1px solid var(--divider); background:var(--surface); color:var(--muted)">UF 3.0：GaussDB → GaussDB</span>
+  <span style="font-size:.66rem; padding:.18rem .5rem; border:1px solid var(--divider); background:var(--surface); color:var(--muted)">OTC 账户 / 多金：GaussDB → Oracle（当前库）</span>
+  <span style="font-size:.66rem; padding:.18rem .5rem; border:1px solid var(--divider); background:var(--surface); color:var(--muted)">OTC 账户 / 多金：GaussDB → Oracle（历史库）</span>
+  <span style="font-size:.66rem; padding:.18rem .5rem; border:1px solid var(--divider); background:var(--surface); color:var(--muted)">TA6：OB Oracle → OB Oracle</span>
+  <span style="font-size:.66rem; padding:.18rem .5rem; border:1px solid var(--divider); background:var(--surface); color:var(--muted)">新 UF3.0 · SEE：MySQL → MySQL</span>
+</div>
+
+<div class="grid grid-cols-4 gap-3 mt-1">
+  <div style="border-top:2px solid var(--brand); padding-top:.45rem">
+    <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">单 Web Server</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">只部署在中间机，负责建链、监控与告警</p>
+  </div>
+  <div style="border-top:2px solid var(--brand); padding-top:.45rem">
+    <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">Agent 源 / 备同机</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">源端与目标端 Agent 都在这台中间机上</p>
+  </div>
+  <div style="border-top:2px solid var(--brand); padding-top:.45rem">
+    <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">全部同机房</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">5 条链路不出机房，不占跨机房专线</p>
+  </div>
+  <div style="border-top:2px solid var(--brand); padding-top:.45rem">
+    <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">与库分离</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">Agent 不落在数据库主机，负载与库互不影响</p>
+  </div>
+</div>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 部署拓扑（2 / 3）</div>
+
 ---
 layout: default
 ---
@@ -702,17 +769,7 @@ layout: default
 <p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">微服务同城双活 · 数据库域名连接透明切换 · FZS 跨机房实时同步</p>
 <img src="/case-shanxi-arch.webp" alt="山西证券 UF30 信创 OTC 逻辑部署图" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 微服务同城双活 · 数据库域名连接 · 全局负载均衡（2 / 3）</div>
----
-layout: default
----
-
-# 山西证券 · 上线切换任务分解
-
-<p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">准备阶段 · 周五清算前 · 标黄行为九桥同步检查项（GAUSS-GAUSS / GAUSS-ORACLE）</p>
-<img src="/case-shanxi-checklist.webp" alt="山西证券上线切换任务清单" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
-
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 九桥同步检查项：GAUSS-GAUSS / GAUSS-ORACLE（3 / 3）</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 微服务同城双活 · 数据库域名连接 · 全局负载均衡（3 / 3）</div>
 ---
 layout: default
 ---
@@ -1238,38 +1295,6 @@ layout: default
 layout: default
 ---
 
-# 信创库侧的拓扑与任务链
-
-<div class="flex items-center gap-2 mt-1" style="font-size:0.74rem">
-  <div style="flex:1; border:1px solid var(--divider); padding:.55rem .5rem; text-align:center">
-    <strong style="color:var(--ink)">生产中心</strong><br/><span style="color:var(--muted); font-size:.68rem">信创库 · 业务写入</span></div>
-  <div style="color:var(--brand); font-weight:700">A1 →</div>
-  <div style="flex:1; border:1px solid var(--divider); padding:.55rem .5rem; text-align:center">
-    <strong style="color:var(--ink)">同城灾备</strong><br/><span style="color:var(--muted); font-size:.68rem">第一级接管</span></div>
-  <div style="color:var(--brand); font-weight:700">B1 →</div>
-  <div style="flex:1; border:1px solid var(--divider); padding:.55rem .5rem; text-align:center">
-    <strong style="color:var(--ink)">采集库</strong><br/><span style="color:var(--muted); font-size:.68rem">下游供数</span></div>
-  <div style="color:var(--brand); font-weight:700">← C1</div>
-  <div style="flex:1; border:1px solid var(--divider); padding:.55rem .5rem; text-align:center">
-    <strong style="color:var(--ink)">异地灾备</strong><br/><span style="color:var(--muted); font-size:.68rem">区域级接管</span></div>
-</div>
-
-<table class="mt-3">
-<thead><tr><th style="width:8%">层级</th><th style="width:22%">任务</th><th>方向</th><th style="width:26%">启动条件</th></tr></thead>
-<tbody>
-<tr><td>一级</td><td>T1 生产同步</td><td>信创库 → 同城灾备 / 采集库 / 异地灾备（一源三目标）</td><td>常态运行</td></tr>
-<tr><td>二级</td><td>T2 同城接管</td><td>同城灾备 → 采集库 / 异地灾备</td><td>信创库不可用，确认后启动</td></tr>
-<tr><td>三级</td><td>T3 异地兜底</td><td>异地灾备 → 采集库（反向补数）</td><td>信创库与同城均不可用</td></tr>
-</tbody>
-</table>
-
-<p style="font-size:0.76rem; color:var(--muted); margin:0.2rem 0 0">任一时刻只有一个写入源；切换动作即“停上一级、启下一级”。</p>
-
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">信创库 → 同城 / 异地 / 采集库 · 三级任务 · 单一写入源</div>
----
-layout: default
----
-
 # 部署架构：控制面与 Agent
 
 <div class="grid grid-cols-2 gap-7 mt-1">
@@ -1312,82 +1337,48 @@ layout: default
 layout: default
 ---
 
-# FZS 的四个动作：建链 · 追平 · 演练 · 接管
+# 信创库侧的拓扑与任务链
 
-<div class="grid grid-cols-4 gap-3 mt-1">
-  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
-    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">01</p>
-    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">建链</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">以信创库为源，分别建到同城灾备、异地灾备、采集库的链路。</p></div>
-  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
-    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">02</p>
-    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">追平</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">建链后持续追平；投产前把灾备追至可用状态。</p></div>
-  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
-    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">03</p>
-    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">演练</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">切同城、切异地两级演练；检查单与耗时记录留存。</p></div>
-  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
-    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">04</p>
-    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">接管</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">投产切换后转入常态运行；故障时按场景切换，由灾备接管生产。</p></div>
+
+<div class="flow-diagram-wrap ob-fig" style="width: calc(100% - 3rem); margin: 0.2rem 1.5rem 0;">
+
+```mermaid
+%%{init: {'theme':'base','flowchart': {'nodeSpacing': 16, 'rankSpacing': 44, 'padding': 8, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#fbf7f6','primaryTextColor':'#1c1917','primaryBorderColor':'#d6cfcb','lineColor':'#b23a2c','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'13px','clusterBkg':'#f5f1ef','clusterBorder':'#ddd3cd','titleColor':'#6b625c'}}}%%
+flowchart LR
+  subgraph S1["同机房"]
+    direction TB
+    A["主集群 · 3 节点<br/>生产（主）"]
+    B["温备库 · 1 节点<br/>待接管"]
+  end
+  subgraph S2["同城"]
+    direction TB
+    C["采集库 · 1 节点<br/>下游供数"]
+  end
+  subgraph S3["异地"]
+    D["灾备库 · 1 节点<br/>区域接管"]
+  end
+  A -->|九桥同步| B
+  A -->|九桥同步| C
+  C -->|九桥同步| D
+  B -.->|增量 · 切温备时启动| C
+```
+
 </div>
 
-<div class="mt-4 px-4 py-2.5" style="background: var(--brand-pale); font-size:0.84rem; color:var(--muted)">
-<strong style="color:var(--brand)">本页只覆盖</strong>信创库侧的同步与接管；迁移与全量不在本方案范围。
-</div>
+<p style="font-size:0.74rem; color:var(--muted); margin:0.1rem 0 0.35rem">连线为业务表同步；应用专用通道（极速交易、行情复制等）不在链路内。</p>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">建链 · 追平 · 演练 · 接管</div>
----
-layout: default
----
-
-# 校验与切换门禁
-
-<div class="grid grid-cols-2 gap-7 mt-1">
-<div>
-<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">FZS 负责的校验</p>
-<ul style="font-size:.84rem; line-height:1.85">
-<li><strong>对象</strong>：信创库与同城 / 异地灾备、采集库之间</li>
-<li><strong>方法</strong>：分片并行比对、关键表抽样、增量窗口比对</li>
-<li><strong>结论</strong>：一致 / 不一致，差异清单可导出</li>
-<li><strong>用途</strong>：灾备切换前的门禁；结论有效期 30 分钟</li>
-</ul>
-</div>
-<div>
-<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">切换动作</p>
-<ul style="font-size:.84rem; line-height:1.85">
-<li><strong>切换</strong>：校验通过后启动灾备任务，应用指向灾备</li>
-<li><strong>时点</strong>：窗口内按总体安排执行，最晚不超过结束前 30 分钟</li>
-<li><strong>切换后</strong>：恢复原同步方向，重新追平并复验</li>
-</ul>
-</div>
-</div>
-
-<div class="mt-3 px-4 py-2.5" style="border-left:3px solid var(--brand); background:#fff; font-size:0.82rem; color:var(--muted)">
-<strong style="color:var(--brand)">注意：</strong>本方案只校验信创库与各同步端之间；迁移校验不在本方案范围。
-</div>
-
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">校验覆盖信创库侧 · 迁移校验不在本方案范围</div>
----
-layout: default
----
-
-# 三个切换场景
-
-<table>
-<thead><tr><th style="width:14%">项目</th><th style="width:28%">场景 A：切同城灾备</th><th style="width:29%">场景 B：切异地灾备</th><th>场景 C：直切异地灾备</th></tr></thead>
+<table class="mt-2">
+<thead><tr><th style="width:20%">任务</th><th>方向</th><th style="width:26%">启动条件</th></tr></thead>
 <tbody>
-<tr><td>触发</td><td>信创库（生产）不可用</td><td>信创库与同城灾备均不可用</td><td>信创库不可用，按预案不经同城直接切异地</td></tr>
-<tr><td>接管方</td><td>同城灾备</td><td>异地灾备</td><td>异地灾备</td></tr>
-<tr><td>RPO 来源</td><td>A1 链路时延</td><td>A3（信创库 → 异地）时延</td><td>A3 时延，与同城灾备无关</td></tr>
-<tr><td>执行动作</td><td>停 T1，启 T2</td><td>停 T1、T2，启 T3</td><td>同场景 B</td></tr>
+<tr><td>T1 生产同步</td><td>主集群 → 温备库 / 采集库 / 异地灾备（一源三目标）</td><td>常态运行</td></tr>
+<tr><td>T2 同城接管</td><td>温备库 → 采集库 → 异地灾备（串联追平）</td><td>主集群不可用，确认后启动</td></tr>
+<tr><td>T3 异地兜底</td><td>异地灾备 → 采集库（反向补数）</td><td>主集群与温备均不可用</td></tr>
 </tbody>
 </table>
 
-<p style="font-size:0.82rem; line-height:1.7; color:var(--muted); margin-top:0.6rem">场景 C 是决策口径：不论同城灾备是否可用（容量、资质、隔离、维护），都可选择不经同城、直切异地；技术动作与场景 B 相同，差别在触发判定与检查单。</p>
+<p style="font-size:0.76rem; color:var(--muted); margin:0.2rem 0 0">任一时刻只有一个写入源；切换动作即“停上一级、启下一级”。</p>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">逐级接管 · 异地兜底 · 直切可作为预案选项</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">信创库 → 同城 / 异地 / 采集库 · 三级任务 · 单一写入源</div>
 ---
 layout: default
 ---
@@ -1418,28 +1409,120 @@ layout: default
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">带宽优先保障增量 · 故障收敛于组内</div>
+
 ---
 layout: default
 ---
 
-# 实施节奏与验收口径
+# 三个切换场景：切换态拓扑
 
-<table>
-<thead><tr><th style="width:16%">阶段</th><th style="width:22%">典型周期</th><th>交付物</th></tr></thead>
+<div class="grid grid-cols-2 gap-5 mt-0.5">
+<div>
+<p style="font-size:0.72rem; font-weight:700; letter-spacing:.1em; color:oklch(97% .005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .3rem">A 切同城温备 · 温备接管</p>
+<div class="flow-diagram-wrap ob-fig">
+
+```mermaid
+%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 30, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#fbf7f6','primaryTextColor':'#1c1917','primaryBorderColor':'#d6cfcb','lineColor':'#b23a2c','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px','clusterBkg':'#f5f1ef','clusterBorder':'#ddd3cd','titleColor':'#6b625c'}}}%%
+flowchart LR
+  subgraph L1["同机房"]
+    A["主集群 3 节点<br/>停 T1"]:::down
+    B["温备库 1 节点<br/>接管生产"]
+  end
+  subgraph L2["同城"]
+    C["采集库 1 节点"]
+  end
+  subgraph L3["异地"]
+    D["灾备库 1 节点"]
+  end
+  A -->|停| B
+  B -->|增量| C
+  C -->|增量| D
+  classDef down fill:#f2efec,stroke:#cfc8c2,color:#9a938d
+```
+
+</div>
+</div>
+<div>
+<p style="font-size:0.72rem; font-weight:700; letter-spacing:.1em; color:oklch(97% .005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .3rem">B / C 切异地灾备 · 异地接管</p>
+<div class="flow-diagram-wrap ob-fig">
+
+```mermaid
+%%{init: {'theme':'base','flowchart': {'nodeSpacing': 12, 'rankSpacing': 30, 'padding': 6, 'curve': 'linear'}, 'themeVariables':{'primaryColor':'#fbf7f6','primaryTextColor':'#1c1917','primaryBorderColor':'#d6cfcb','lineColor':'#b23a2c','fontFamily':'Kaiti SC, KaiTi, serif','fontSize':'10px','clusterBkg':'#f5f1ef','clusterBorder':'#ddd3cd','titleColor':'#6b625c'}}}%%
+flowchart LR
+  subgraph L1["同机房"]
+    A["主集群 3 节点<br/>宕机"]:::down
+    B["温备库 1 节点<br/>宕机"]:::down
+  end
+  subgraph L2["同城"]
+    C["采集库 1 节点"]
+  end
+  subgraph L3["异地"]
+    D["灾备库 1 节点<br/>接管生产"]
+  end
+  D -->|增量 · 反向补数| C
+  A ~~~ D
+  classDef down fill:#f2efec,stroke:#cfc8c2,color:#9a938d
+```
+
+</div>
+</div>
+</div>
+
+<table class="mt-1" style="font-size:0.78rem">
+<thead><tr><th style="width:12%">项目</th><th style="width:27%">场景 A：切同城温备</th><th style="width:30%">场景 B：切异地灾备</th><th>场景 C：直切异地</th></tr></thead>
 <tbody>
-<tr><td>评估与设计</td><td>1–2 周</td><td>对象清单、拓扑与链路设计、切换场景确认</td></tr>
-<tr><td>部署与建链</td><td>1–2 周</td><td>控制面与节点、信创库到各端链路、监控告警</td></tr>
-<tr><td>追平与演练</td><td>1–2 周</td><td>追平达标；切同城 / 切异地演练记录</td></tr>
-<tr><td>上线配合</td><td>切换当天</td><td>链路停启配合、切换记录、校验报告</td></tr>
-<tr><td>观察</td><td>上线后 1 周</td><td>观察期结论、告警复盘</td></tr>
+<tr><td>触发</td><td>主集群不可用</td><td>主集群与温备均不可用</td><td>主集群不可用，按预案不经同城</td></tr>
+<tr><td>接管方</td><td>同机房温备库</td><td>异地灾备库</td><td>异地灾备库</td></tr>
+<tr><td>RPO</td><td>A1 链路时延</td><td>串联链路时延（采集库 → 异地）</td><td>同场景 B</td></tr>
+<tr><td>执行动作</td><td>停 T1，启 T2</td><td>停 T1 / T2，启 T3</td><td>同场景 B</td></tr>
 </tbody>
 </table>
 
-<div class="mt-2 px-4 py-2.5" style="background: var(--brand-pale); font-size:0.82rem; color:var(--muted)">
-<strong style="color:var(--brand)">验收三项：</strong>文档评审（方案 + 手册）　·　现场演练（切同城 / 切异地）　·　指标核验（时延、计数、比对结论、告警记录）
+<p style="font-size:0.76rem; line-height:1.6; color:var(--muted); margin-top:0.25rem">场景 C 是决策口径：不论同城温备是否可用，都可选择不经同城直切异地；技术动作与 B 相同，差别在触发判定与检查单。</p>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">逐级接管 · 异地兜底 · 直切可作为预案选项</div>
+
+---
+layout: default
+---
+
+# FZS 的四个动作：建链 · 追平 · 演练 · 接管
+
+<div class="grid grid-cols-4 gap-3 mt-1">
+  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
+    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">01</p>
+    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">建链</p>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">以信创库为源，分别建到同城灾备、异地灾备、采集库的链路。</p></div>
+  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
+    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">02</p>
+    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">追平</p>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">建链后持续追平；投产前把灾备追至可用状态。</p></div>
+  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
+    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">03</p>
+    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">演练</p>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">切同城、切异地两级演练；检查单与耗时记录留存。</p></div>
+  <div style="border-top:2px solid var(--brand); padding-top:.55rem">
+    <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">04</p>
+    <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">接管</p>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">投产切换后转入常态运行；故障时按场景切换，由灾备接管生产。</p></div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">FZS 的节奏：建链 → 追平 → 演练 → 上线配合 → 观察</div>
+<div class="mt-4 px-4 py-2.5" style="background: var(--brand-pale); font-size:0.84rem; color:var(--muted)">
+<strong style="color:var(--brand)">本页只覆盖</strong>信创库侧的同步与接管；迁移与全量不在本方案范围。
+</div>
+
+<table class="mt-3" style="font-size:0.74rem; table-layout:fixed">
+<thead><tr><th style="width:9%">动作</th><th style="width:44%">关键操作</th><th style="width:37%">检查项 / 产出</th><th style="width:10%">参考耗时</th></tr></thead>
+<tbody>
+<tr><td>建链</td><td>开通源端账号与端口，取 RootService 列表与 config-url；部署 Agent，按一源三目标建三条链路</td><td>连通性与权限通过；三条链路状态正常；首轮全量完成</td><td>0.5–1 天</td></tr>
+<tr><td>追平</td><td>增量持续追平，盯延迟与积压；无唯一键表、大字段表逐表处置</td><td>延迟稳定在秒级、积压归零；抽样行数与内容一致</td><td>1–3 天</td></tr>
+<tr><td>演练</td><td>切同城、切异地两级演练：停 T1 启 T2 / T3，应用指向切换后再切回</td><td>检查单逐项签字；切换耗时与数据结果留档</td><td>每轮 2–4 小时</td></tr>
+<tr><td>接管</td><td>故障时停上一级、启下一级；恢复后反向补数并复验</td><td>任一时刻单一写入源；切换记录 + 校验报告归档</td><td>分钟级</td></tr>
+</tbody>
+</table>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">建链 · 追平 · 演练 · 接管</div>
+
 ---
 layout: center
 class: text-center
