@@ -27,6 +27,10 @@ jobs:
           node-version: 'lts/*'
 
       - name: Install
+        # Static `slidev build` does not launch a browser; skip Playwright's
+        # postinstall download, which rejects newer Ubuntu runner images.
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm ci
 
       - name: Build (all decks)
