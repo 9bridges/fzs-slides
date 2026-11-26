@@ -691,7 +691,7 @@ layout: default
     <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">读日志<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
     <div style="flex:1.2; border:1px solid var(--brand); background:var(--surface); padding:.5rem .6rem">
       <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">中间机（1 台）</p>
-      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">Web Server ×1<br/>源端 Agent ×1（5 条链路）<br/>目标端 Agent ×1（5 条链路）</div>
+      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">Web Server ×1<br/>源端 Agent ×5<br/>目标端 Agent ×5</div>
     </div>
     <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">写入<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
     <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.5rem .6rem">
@@ -716,7 +716,7 @@ layout: default
   </div>
   <div style="border-top:2px solid var(--brand); padding-top:.45rem">
     <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">Agent 源 / 备同机</p>
-    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">源端与目标端各 1 个 Agent，各承载 5 条链路</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">每条链路源端、备端各 1 个 Agent，共 10 个</p>
   </div>
   <div style="border-top:2px solid var(--brand); padding-top:.45rem">
     <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">全部同机房</p>
