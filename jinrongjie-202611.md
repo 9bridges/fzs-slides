@@ -672,36 +672,6 @@ layout: default
       <span style="font-size: 0.6rem; color: var(--muted)">同构同步</span>
       <span style="font-size: 0.6rem; color: var(--muted)">信息技术部</span>
     </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
-      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">集中交易</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">实时灾备</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
-      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">OA 办公</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">达梦 V8 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">信创同步</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
-      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">开户系统</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">MySQL 8.0 <span style="color: var(--brand); font-weight: 700">→</span> Oracle 11G</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">异构同步</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center">
-      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">账户系统</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> MySQL 8.0</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">反向回写</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 7rem 1fr 5.2rem 5.5rem; padding: 0.15rem 0.75rem; border-top: 1px solid var(--divider); align-items: center; background: var(--brand-pale)">
-      <span style="font-size: 0.7rem; font-weight: 600; color: var(--ink)">交易风控</span>
-      <span style="font-family: 'Fira Code', monospace; font-size: 0.66rem; color: var(--muted)">Oracle 11G <span style="color: var(--brand); font-weight: 700">→</span> Kafka 2.7.x</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">实时集成</span>
-      <span style="font-size: 0.6rem; color: var(--muted)">金融科技部</span>
-    </div>
   </div>
 </div>
 
@@ -721,7 +691,7 @@ layout: default
     <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">读日志<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
     <div style="flex:1.2; border:1px solid var(--brand); background:var(--surface); padding:.5rem .6rem">
       <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">中间机（1 台）</p>
-      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">Web Server ×1<br/>源端 Agent<br/>目标端 Agent</div>
+      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">Web Server ×1<br/>源端 Agent ×1（5 条链路）<br/>目标端 Agent ×1（5 条链路）</div>
     </div>
     <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">写入<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
     <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.5rem .6rem">
@@ -746,7 +716,7 @@ layout: default
   </div>
   <div style="border-top:2px solid var(--brand); padding-top:.45rem">
     <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">Agent 源 / 备同机</p>
-    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">源端与目标端 Agent 都在这台中间机上</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">源端与目标端各 1 个 Agent，各承载 5 条链路</p>
   </div>
   <div style="border-top:2px solid var(--brand); padding-top:.45rem">
     <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">全部同机房</p>
