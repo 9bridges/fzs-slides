@@ -47,7 +47,7 @@ layout: default
 <div class="space-y-2.5">
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">04</span><span>案例：山西证券 UF3.0 · 贵阳农商行信创</span></div>
 <div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">05</span><span><strong>OceanBase 同步原理</strong>（重点）：全量 · 增量 CDC · 无缝衔接</span></div>
-<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">06</span><span><strong>UF3.0 升级方案</strong>：分工边界 · 信创库侧拓扑 · 四个动作 · 校验与三场景</span></div>
+<div class="flex items-baseline gap-3"><span style="color: var(--brand); font-weight: 700; font-size: 1.05rem; min-width: 1.8rem">06</span><span><strong>UF3.0 升级方案</strong>：范围与起点 · 信创库侧拓扑 · 四个动作 · 校验与三场景</span></div>
 </div>
 </div>
 
@@ -285,15 +285,15 @@ layout: default
 <table class="cmp-tb" style="font-size: 0.96rem">
 <thead><tr><th style="width: 46%">老 Web 界面</th><th>新 Web 控制台</th></tr></thead>
 <tbody>
-<tr><td>系统配置里填<strong>源端 / 目标端 IP、端口、源端 id</strong></td><td>录一次<strong>数据节点</strong>，多条链路复用，不用重复填连接</td></tr>
-<tr><td>配 <strong>map</strong>，再到「配置文件信息」里核对 conf</td><td><strong>同步对象</strong>页直接勾用户 / 表 / 列，conf 由系统生成</td></tr>
+<tr><td>系统配置里填<strong>源端 / 目标端 IP、端口、源端 id</strong></td><td>录一次<strong>数据节点</strong>，多条链路复用，无需重复填写连接信息</td></tr>
+<tr><td>配 <strong>map</strong>，再到「配置文件信息」里核对 conf</td><td><strong>同步对象</strong>页直接勾选用户 / 表 / 列，conf 由系统生成</td></tr>
 <tr><td>在系统级<strong>参数配置</strong>页调导出、装载参数</td><td>收敛到单条链路第 5 步<strong>其它配置</strong>，按目标端预填默认值</td></tr>
 <tr><td>到<strong>进程监控</strong>页逐个启动、停止、修复</td><td>链路<strong>启停 / 修复 / 重置</strong>一个入口，异常还能自愈与组内漂移</td></tr>
 </tbody>
 </table>
 
 <div class="mt-6 px-4 py-3" style="background: var(--brand-pale); font-size: 0.88rem; color: var(--muted)">
-<strong style="color: var(--brand)">参数一个没少：</strong>原来系统级的参数在新界面里都能对上——导出、装载、接收、分配、监控五类前缀参数，从「系统级」挪到「单条链路」，并带默认值；节点与链路都可复制，不必每次从头配。
+<strong style="color: var(--brand)">参数一个没少：</strong>原来系统级的参数在新界面里都能对上——导出、装载、接收、分配、监控五类前缀参数，从「系统级」下沉到「单条链路」，并带默认值；节点与链路均可复制，无需逐条重复配置。
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">概念对应：源端 / 目标端 → 数据节点 · map → 同步对象 · conf → 链路配置 · 进程 → 链路状态</div>
@@ -437,7 +437,7 @@ layout: default
 
 - **平台对象**：Web Server / 数据节点 / 链路的增删改查，含启停、修复、重置、复制
 - **运行操作**：主备与灾备切换、数据比对、坏表检查、日志查询
-- **调度**：一句话排定时 —— 「今晚 18 点停止追平」「5 分钟后启动」
+- **调度**：自然语言排定时 —— 「今晚 18 点停止追平」「5 分钟后启动」
 - **巡检**：一键生成 Word 巡检报告（拓扑 / 指标 / 比对结论）
 - **配置**：告警阈值与通知渠道、导航分组、系统概览
 
@@ -806,37 +806,29 @@ layout: section
 
 # OceanBase 同步原理
 
-<div style="color: oklch(86% 0.025 30); margin-top: 1rem; font-size: 0.95rem; letter-spacing: 0.02em">全量如何搬 · 增量如何追 · 两者如何无缝衔接</div>
+<div style="color: oklch(86% 0.025 30); margin-top: 1rem; font-size: 0.95rem; letter-spacing: 0.02em">全量迁移 · 增量追平 · 两者如何无缝衔接</div>
 ---
 layout: default
 ---
 
-# 为什么是 FZS：与 OceanBase 的双向能力
+# 为什么是 FZS：正向投递与反向补数
 
 <div class="grid grid-cols-2 gap-10 mt-3">
 <div>
-
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">Oracle → OceanBase（本项目主路径）</p>
-
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">正向：信创库 → 灾备 / 采集库</p>
 <ul class="text-sm mt-2 space-y-2">
-<li>目标端支持 <strong>OceanBase Oracle 模式</strong> 与 MySQL 模式</li>
-<li>Oracle 模式兼容 Oracle 类型与 PL/SQL 语法，结构改造量小</li>
-<li>Oracle → OceanBase（Oracle 模式）的数据比对支持级别为 <strong>「支持到数据校验」</strong></li>
-<li>曾完成 Oracle → OceanBase Oracle 模式的迁移落地（详见案例）</li>
+<li>以<strong>信创库（OceanBase）为源</strong>，日志级增量捕获</li>
+<li>一源三目标：同城灾备、异地灾备、采集库</li>
+<li>源端只读日志，不侵入业务表</li>
 </ul>
-
 </div>
 <div>
-
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">OceanBase → 其他库（回退 / 双跑 / 二次分发）</p>
-
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">反向：接管后 灾备 → 采集库</p>
 <ul class="text-sm mt-2 space-y-2">
-<li>OceanBase 作为<strong>源端</strong>支持增量抓取（3.x / 4.x）</li>
-<li>用于割接后的<strong>反向回退</strong>、双跑验证、向分析库二次分发</li>
-<li>支持 OceanBase → Oracle / MySQL / StarRocks 等异构链路</li>
-<li>案例：某券商 OceanBase（Oracle 模式）→ StarRocks 实时入仓</li>
+<li>灾备接管生产后，由接管端向采集库<strong>反向补数</strong>（C1）</li>
+<li>采集库转为被同步端，下游报表与报送不断供</li>
+<li>两端同为 OceanBase 时类型一致，无需结构转换</li>
 </ul>
-
 </div>
 </div>
 
@@ -851,7 +843,8 @@ layout: default
 </table>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">双向能力意味着：割接前后是同一条链路的两个方向，回退不需要重新建设</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">同一套链路覆盖正向投递与反向补数，切换后无需重建</div>
+
 ---
 layout: default
 ---
@@ -866,7 +859,7 @@ flowchart LR
   A([开始]) --> B["锚定一致性快照点<br/>记录系统变更号"]
   B --> C["按表 / 分区拆分任务<br/>大表单独并发"]
   C --> D["一致读取数据<br/>多进程并行"]
-  D --> E["按目标方言生成 DDL / DML<br/>在 OceanBase 建表并装载"]
+  D --> E["按同构结构建表<br/>在 OceanBase 装载"]
   E --> F([全量完成<br/>增量从同一变更号接续])
 ```
 
@@ -888,13 +881,13 @@ flowchart LR
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.6rem">为什么先锚定时间点</p>
 <p style="font-size: 0.88rem; line-height: 1.75; color: var(--muted)">它与后面的增量是同一个坐标原点：全量读取的是 时间 = N 的一致快照，增量从 N 起捕获，两段覆盖同一时间轴，中间没有空档。</p>
 <div class="mt-3 px-4 py-3" style="background: var(--brand-pale); font-size: 0.86rem">
-<strong>一句话：</strong>全量负责"把存量搬过去"，增量负责"从搬的那一刻起不断追"，两者共用一个时间。
+<strong>简言之：</strong>全量负责存量搬迁，增量从搬迁完成那一刻起持续追平，两者共用同一时间基准。
 </div>
 </div>
 
 </div>
 
-<div class="mt-3 px-4 py-2.5" style="background: var(--brand-pale); border-left: 2px solid var(--brand); font-size: 0.84rem; line-height: 1.6"><strong>全量阶段的关键不是"搬得快"，而是"起点可复现"</strong>——起始时间点一旦确定，全量与增量的所有动作都有据可依。</div>
+<div class="mt-3 px-4 py-2.5" style="background: var(--brand-pale); border-left: 2px solid var(--brand); font-size: 0.84rem; line-height: 1.6"><strong>全量阶段的关键不是速度，而是起点可复现</strong>——起始时间点一旦确定，全量与增量的所有动作都有据可依。</div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">全量期间业务照常写入 · 快照点与增量共用同一个时间点</div>
 ---
@@ -954,8 +947,8 @@ layout: default
 flowchart LR
   P(["一致快照点<br/>时间 = N"]) --> F["全量同步<br/>结构与存量数据"]
   F --> I["增量同步<br/>从 时间 = N 开始追平"]
-  I --> C(["割接点<br/>短暂停写"])
-  C --> R["反向链路就绪<br/>可回退"]
+  I --> C(["切换点<br/>短暂停写"])
+  C --> R["反向链路就绪<br/>可补数"]
 ```
 
 </div>
@@ -968,17 +961,17 @@ flowchart LR
 </div>
 <div class="px-4 py-3" style="background: var(--surface); border: 1px solid var(--divider)">
 <strong style="color: var(--brand)">为什么要并行推进</strong><br/>
-<span style="color: var(--muted)">增量在全量期间就已开始捕获，全量结束时差距已被压缩到很小，割接窗口自然变短</span>
+<span style="color: var(--muted)">增量在全量期间就已开始捕获，全量结束时差距已被压缩到很小，切换窗口自然变短</span>
 </div>
 <div class="px-4 py-3" style="background: var(--surface); border: 1px solid var(--divider)">
-<strong style="color: var(--brand)">停机窗口怎么算</strong><br/>
+<strong style="color: var(--brand)">停机窗口估算</strong><br/>
 <span style="color: var(--muted)">等于"最后一段增量追平 + 应用切换"的时间，而不是全量搬迁的时间</span>
 </div>
 </div>
 
 <div class="mt-5 px-5 py-4" style="background: var(--brand-pale); border-left: 2px solid var(--brand); font-size: 0.9rem; line-height: 1.7"><strong>全量与增量不是两个任务，而是同一条链路的两个阶段：</strong>一个负责起跑，一个负责保持。</div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">割接窗口由增量追平决定，通常远小于传统批量迁移</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">切换窗口由增量追平决定，通常只有分钟级</div>
 ---
 layout: default
 transition: slide-left
@@ -1082,78 +1075,68 @@ flowchart TD
 layout: default
 ---
 
-# OceanBase 作为目标端：写入原理与适配要点
+# 写入 OceanBase：装载与适配
 
 <div class="grid grid-cols-2 gap-8 mt-2">
-
 <div>
 <table>
 <thead><tr><th>环节</th><th>做法</th></tr></thead>
 <tbody>
-<tr><td>目标模式</td><td>OceanBase <strong>Oracle 模式</strong>（推荐，兼容 Oracle 类型与语法）/ MySQL 模式</td></tr>
-<tr><td>连接方式</td><td>通过 ODP（OBProxy）或直连 OBServer 装载；端口 2883 / 2881</td></tr>
-<tr><td>结构转换</td><td>Oracle 模式专用结构转换：表、分区、索引、约束、序列、视图、同义词、权限、注释、类型</td></tr>
-<tr><td>分区处理</td><td>分区维护动作（新增 / 拆分 / 合并 / 交换 / 重命名 / 截断）自动转换为目标语法</td></tr>
-<tr><td>数据装载</td><td>批量装载 + 冲突处理；目标端持续可读写，可直接承接查询与报表</td></tr>
+<tr><td>结构</td><td>同构：两端均为 OceanBase，表、分区、索引、约束保持一致，无需方言转换</td></tr>
+<tr><td>连接</td><td>通过 ODP（OBProxy）或直连 OBServer 装载；端口 2883 / 2881</td></tr>
+<tr><td>DDL</td><td>分区维护动作按同构重放（新增 / 拆分 / 合并 / 交换 / 重命名 / 截断）</td></tr>
+<tr><td>装载</td><td>批量装载 + 主键 / 唯一键冲突处理；目标端持续可读写，可直接承接查询与报表</td></tr>
 </tbody>
 </table>
 </div>
-
 <div>
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">为什么 Oracle 模式更省事</p>
-<ul style="font-size: 0.84rem; line-height: 1.65" class="space-y-2">
-<li>Oracle 类型体系与目标端一致，类型映射与精度损失风险最小</li>
-<li>应用侧 SQL 与 PL/SQL 语法兼容，改造集中在少数专有特性</li>
-<li>分区表可直接对应，不必重写分区策略</li>
-</ul>
-
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin: 0.8rem 0 0.5rem">仍然需要注意</p>
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">仍然需要注意</p>
 <ul style="font-size: 0.84rem; line-height: 1.65" class="space-y-1">
-<li>PL/SQL 包、触发器、物化视图不做自动语法转换（需应用侧改造）</li>
-<li>复杂分区操作与 Oracle 专有存储属性按目标能力降级</li>
+<li>大字段 / LOB 表按目标端参数评估写入与存储</li>
+<li>无唯一键表无法判定行同一性，须建链前逐表处置</li>
+<li>字符集与排序规则在建库时确定，建链前确认一致</li>
 </ul>
 </div>
 </div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">同构同步：结构不转换、类型不映射，装载即生效</div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">Oracle 模式 = 结构改造量最小 + 类型风险最低；PL/SQL 业务逻辑另行改造</div>
 ---
 layout: default
 ---
 
-# OceanBase 作为源端：捕获原理（回退 / 双跑 / 二次分发）
+# OceanBase 作为源端：日志捕获
 
-<div class="grid grid-cols-2 gap-8 mt-2">
-
+<div class="grid gap-8 mt-2" style="grid-template-columns: 2fr 3fr">
 <div>
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">捕获原理</p>
 <ul style="font-size: 0.86rem; line-height: 1.7" class="space-y-2">
 <li>直接读取 OceanBase 的<strong>增量日志</strong>获取变更，不依赖触发器</li>
 <li>支持 OceanBase <strong>3.x / 4.x</strong> 两个大版本</li>
 <li>需要提供 <strong>RootService 列表</strong>与 <strong>config-url</strong>（增量链路配置来源）</li>
-<li>变更经事务重组后按顺序投递，目标端可为 Oracle、MySQL、StarRocks 等</li>
+<li>变更经事务重组后按顺序投递，目标端同为 OceanBase，结构一致</li>
 </ul>
 </div>
-
 <div>
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">OceanBase 侧需要准备什么</p>
 <table>
+<colgroup><col style="width:34%"><col></colgroup>
 <thead><tr><th>项目</th><th>要求</th></tr></thead>
 <tbody>
 <tr><td>端口</td><td>OBProxy 2883、OBServer 2881；增量抓取另需 RootService <strong>2882</strong> 与 OBConfig 8080</td></tr>
-<tr><td>sys 租户账号</td><td>创建带密码用户并授权，用于增量链路配置读取</td></tr>
-<tr><td>业务租户账号</td><td>Oracle 模式：<code>__OCEANBASE_INNER_DRC_USER</code>（DBA）；MySQL 模式：<code>__oceanbase_inner_drc_user</code>（ALL）</td></tr>
-<tr><td>config-url</td><td><code>show parameters like 'obconfig_url'</code> 获取并放通对应地址</td></tr>
+<tr><td>sys 账号</td><td>创建带密码用户并授权，用于增量链路配置读取</td></tr>
+<tr><td>业务账号</td><td>Oracle 模式：<code>__OCEANBASE_INNER_DRC_USER</code>（DBA）；MySQL 模式：<code>__oceanbase_inner_drc_user</code>（ALL）</td></tr>
+<tr><td>配置地址</td><td><code>show parameters like 'obconfig_url'</code> 获取并放通对应地址</td></tr>
 </tbody>
 </table>
 </div>
 </div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">捕获、重组、投递三段可分别观测，便于定位瓶颈</div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">割接后保留这条反向链路，就等于保留了回退通道</div>
 ---
 layout: default
 ---
 
-# 一致性保证：RPO ≈ 0 是怎么做到的
+# 一致性保证：RPO ≈ 0 的实现机制
 
 <div class="grid grid-cols-2 gap-8 mt-2">
 
@@ -1173,19 +1156,19 @@ layout: default
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: oklch(97% 0.005 30); background: var(--brand); display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.5rem">与"数据库自带主备"的区别</p>
 <ul style="font-size: 0.84rem; line-height: 1.65" class="space-y-2">
 <li>自带主备：同构、同版本、由数据库厂商实现，跨库/跨版本不可用</li>
-<li>FZS：跨异构、跨版本，可同时服务灾备、迁移、入仓三类需求</li>
+<li>FZS：跨版本、跨站点，可同时服务同城灾备、异地灾备与采集库供数</li>
 <li>自带主备：切换通常需要 DBA 介入；FZS 提供一键方向反转与灾备自动接管</li>
-<li>FZS 额外提供<strong>数据比对</strong>，可以证明"目标端是对的"</li>
+<li>FZS 额外提供<strong>数据比对</strong>，可证明目标端数据一致</li>
 </ul>
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">一致性不是宣称，而是"机制 + 可验证"两件事</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">一致性由机制与验证共同保证</div>
 ---
 layout: default
 ---
 
-# 校验闭环：割接前必须给出结论
+# 校验闭环：切换前必须给出结论
 
 <div class="flow-diagram-wrap ob-fig" style="width: calc(100% - 5rem); margin: 0 2.5rem;">
 
@@ -1207,11 +1190,11 @@ flowchart LR
 </div>
 <div class="px-4 py-3" style="background: var(--surface); border: 1px solid var(--divider)">
 <strong style="color: var(--brand)">支持级别</strong><br/>
-<span style="color: var(--muted)">Oracle → OceanBase（Oracle 模式）为「支持到数据校验」级别</span>
+<span style="color: var(--muted)">信创库与各同步端之间支持到数据校验（行级内容 + 行数 + 对象定义）</span>
 </div>
 <div class="px-4 py-3" style="background: var(--surface); border: 1px solid var(--divider)">
 <strong style="color: var(--brand)">执行建议</strong><br/>
-<span style="color: var(--muted)">目标端无延迟、非业务高峰期执行；结果作为割接放行依据</span>
+<span style="color: var(--muted)">目标端无延迟、非业务高峰时段执行；结果作为切换放行依据</span>
 </div>
 </div>
 
@@ -1222,37 +1205,35 @@ layout: section
 
 # UF3.0 信创升级 · 数据库同步方案
 
-<div style="color: oklch(86% 0.025 30); margin-top: 1rem; font-size: 0.95rem; letter-spacing: 0.02em">FZS 负责信创库侧的同步与接管；迁移与割接由恒生负责</div>
+<div style="color: oklch(86% 0.025 30); margin-top: 1rem; font-size: 0.95rem; letter-spacing: 0.02em">以信创库为起点：同步 · 接管 · 切换</div>
 ---
 layout: default
 ---
 
-# 分工：迁移归恒生，同步归 FZS
+# 范围：从信创库开始
 
 <div class="grid grid-cols-2 gap-7 mt-1">
 <div style="border:1px solid var(--divider); padding:1rem 1.1rem">
-<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">恒生 UF3.0</p>
-<ul style="font-size:.86rem; line-height:1.85; margin:0">
-<li>非信创库（Oracle）到信创库的<strong>迁移与全量</strong></li>
-<li>割接窗口内的数据搬迁与业务切换</li>
-<li>迁移过程的数据校验</li>
-</ul>
-</div>
-<div style="border:1px solid var(--divider); padding:1rem 1.1rem">
-<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">九桥 FZS</p>
+<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">本方案覆盖</p>
 <ul style="font-size:.86rem; line-height:1.85; margin:0">
 <li>以<strong>信创库（OceanBase）为源</strong>，向同城灾备 / 异地灾备 / 采集库实时同步</li>
 <li>灾备接管：故障时按场景 A / B / C 切换</li>
-<li>信创库与灾备之间的校验、监控与告警</li>
+<li>信创库与各同步端之间的校验、监控与告警</li>
+</ul>
+</div>
+<div style="border:1px solid var(--divider); padding:1rem 1.1rem">
+<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">不在本方案范围</p>
+<ul style="font-size:.86rem; line-height:1.85; margin:0">
+<li>非信创库到信创库的<strong>迁移与全量</strong></li>
+<li>应用改造、存储过程与触发器的重建</li>
+<li>UF3.0 参数配置与硬件选型</li>
 </ul>
 </div>
 </div>
-
 <div class="mt-3 px-4 py-2.5" style="background: var(--brand-pale); font-size:0.84rem; color:var(--muted)">
-<strong style="color:var(--brand)">交界点：</strong>恒生完成迁移、信创库可读后，FZS 建链追平；割接后信创库成为生产源，FZS 转入常态运行。
+<strong style="color:var(--brand)">起点：</strong>信创库就绪、可读之后接入；信创库成为生产源后，FZS 转入常态运行。
 </div>
-
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">迁移归恒生 · 同步与接管归 FZS</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">以信创库为起点 · 只做同步与接管</div>
 ---
 layout: default
 ---
@@ -1289,6 +1270,48 @@ layout: default
 layout: default
 ---
 
+# 部署架构：控制面与 Agent
+
+<div class="grid grid-cols-2 gap-7 mt-1">
+<div>
+<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">控制面：三节点</p>
+<ul style="font-size:.84rem; line-height:1.85">
+<li><strong>组成</strong>：Web Server 组 + 控制台 + 巡检，节点间共享存储</li>
+<li><strong>调度</strong>：链路在组内选址，节点故障自动漂移、断点续跑</li>
+<li><strong>资源</strong>：8c / 32g / 500G 起，节点间万兆</li>
+</ul>
+<p style="font-size:.76rem; color:var(--muted); margin:.2rem 0 0">生产环境建议三节点；评估与 POC 可单机。</p>
+</div>
+<div>
+<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">Agent：两种形态</p>
+<ul style="font-size:.84rem; line-height:1.85">
+<li><strong>中间机</strong>：源 / 目标 Agent 同机，数据在机房内闭环 → 同机房、低侵入</li>
+<li><strong>异地分离</strong>：两端分设，经专线传输并限速 → 跨站点</li>
+<li><strong>资源</strong>：2C / 4G 起，按链路数量与全量规模调整</li>
+</ul>
+<p style="font-size:.76rem; color:var(--muted); margin:.2rem 0 0">Agent 不依赖控制面存活，控制面重启不影响同步。</p>
+</div>
+</div>
+
+<div class="mt-3 px-4 py-2.5" style="background: var(--brand-pale); font-size:0.84rem; color:var(--muted)">
+<strong style="color:var(--brand)">网络：</strong>管理区到各站点单向可达即可下发与纳管；中间机形态数据走本机，异地分离才占用专线带宽。
+</div>
+
+<table class="mt-3">
+<thead><tr><th style="width:24%">部署位置</th><th>部署组件</th><th style="width:34%">说明</th></tr></thead>
+<tbody>
+<tr><td>管理区（或生产中心）</td><td>控制面三节点：Web Server 组 + 控制台 + 巡检</td><td>三节点共享存储，故障自动漂移</td></tr>
+<tr><td>生产中心</td><td>源端 Agent</td><td>中间机形态时部署在中间机</td></tr>
+<tr><td>同城灾备 / 异地灾备</td><td>目标端 Agent</td><td>异地分离时两端各一套</td></tr>
+<tr><td>采集库</td><td>目标端 Agent</td><td>供数链路单独限速</td></tr>
+</tbody>
+</table>
+
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">控制面三节点 · Agent 两形态 · 资源与网络可预估</div>
+---
+layout: default
+---
+
 # FZS 的四个动作：建链 · 追平 · 演练 · 接管
 
 <div class="grid grid-cols-4 gap-3 mt-1">
@@ -1299,7 +1322,7 @@ layout: default
   <div style="border-top:2px solid var(--brand); padding-top:.55rem">
     <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">02</p>
     <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">追平</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">随恒生迁移进度持续追平；割接前把灾备追至可用状态。</p></div>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">建链后持续追平；投产前把灾备追至可用状态。</p></div>
   <div style="border-top:2px solid var(--brand); padding-top:.55rem">
     <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">03</p>
     <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">演练</p>
@@ -1307,11 +1330,11 @@ layout: default
   <div style="border-top:2px solid var(--brand); padding-top:.55rem">
     <p style="font-size:.68rem; color:var(--brand); font-weight:700; margin:0">04</p>
     <p style="font-size:.9rem; font-weight:600; margin:.15rem 0 .25rem">接管</p>
-    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">割接后转入常态运行；故障时按场景切换，由灾备接管生产。</p></div>
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6; margin:0">投产切换后转入常态运行；故障时按场景切换，由灾备接管生产。</p></div>
 </div>
 
 <div class="mt-4 px-4 py-2.5" style="background: var(--brand-pale); font-size:0.84rem; color:var(--muted)">
-<strong style="color:var(--brand)">不在 FZS 范围内：</strong>非信创库到信创库的迁移与全量、割接窗口内的数据搬迁——均由恒生负责。
+<strong style="color:var(--brand)">本页只覆盖</strong>信创库侧的同步与接管；迁移与全量不在本方案范围。
 </div>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">建链 · 追平 · 演练 · 接管</div>
@@ -1332,21 +1355,20 @@ layout: default
 </ul>
 </div>
 <div>
-<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">切换与回退</p>
+<p style="font-size:.7rem; font-weight:700; letter-spacing:.12em; color:oklch(97% 0.005 30); background:var(--brand); display:inline-block; padding:.12rem .55rem; margin:0 0 .5rem">切换动作</p>
 <ul style="font-size:.84rem; line-height:1.85">
 <li><strong>切换</strong>：校验通过后启动灾备任务，应用指向灾备</li>
-<li><strong>回退</strong>：割接窗口内由恒生主导；FZS 配合停 / 启链路</li>
-<li><strong>最晚回退时刻</strong>：窗口结束前 30 分钟</li>
-<li><strong>回退后</strong>：恢复原同步方向，重新追平并复验</li>
+<li><strong>时点</strong>：窗口内按总体安排执行，最晚不超过结束前 30 分钟</li>
+<li><strong>切换后</strong>：恢复原同步方向，重新追平并复验</li>
 </ul>
 </div>
 </div>
 
 <div class="mt-3 px-4 py-2.5" style="border-left:3px solid var(--brand); background:#fff; font-size:0.82rem; color:var(--muted)">
-<strong style="color:var(--brand)">注意：</strong>Oracle 到信创库的迁移校验不在 FZS 范围；FZS 只校验信创库与各同步端之间。
+<strong style="color:var(--brand)">注意：</strong>本方案只校验信创库与各同步端之间；迁移校验不在本方案范围。
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">校验覆盖信创库侧 · 迁移校验归恒生</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">校验覆盖信创库侧 · 迁移校验不在本方案范围</div>
 ---
 layout: default
 ---
@@ -1395,7 +1417,7 @@ layout: default
 </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">把有限的带宽用在增量上 · 把故障收敛在组内</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">带宽优先保障增量 · 故障收敛于组内</div>
 ---
 layout: default
 ---
@@ -1408,16 +1430,16 @@ layout: default
 <tr><td>评估与设计</td><td>1–2 周</td><td>对象清单、拓扑与链路设计、切换场景确认</td></tr>
 <tr><td>部署与建链</td><td>1–2 周</td><td>控制面与节点、信创库到各端链路、监控告警</td></tr>
 <tr><td>追平与演练</td><td>1–2 周</td><td>追平达标；切同城 / 切异地演练记录</td></tr>
-<tr><td>配合割接</td><td>窗口当天</td><td>链路停启配合、切换记录、校验报告</td></tr>
-<tr><td>观察</td><td>割接后 1 周</td><td>观察期结论、告警复盘</td></tr>
+<tr><td>上线配合</td><td>切换当天</td><td>链路停启配合、切换记录、校验报告</td></tr>
+<tr><td>观察</td><td>上线后 1 周</td><td>观察期结论、告警复盘</td></tr>
 </tbody>
 </table>
 
 <div class="mt-2 px-4 py-2.5" style="background: var(--brand-pale); font-size:0.82rem; color:var(--muted)">
-<strong style="color:var(--brand)">验收三件套：</strong>文档评审（方案 + 手册）　·　现场演练（切同城 / 切异地）　·　指标核验（时延、计数、比对结论、告警记录）
+<strong style="color:var(--brand)">验收三项：</strong>文档评审（方案 + 手册）　·　现场演练（切同城 / 切异地）　·　指标核验（时延、计数、比对结论、告警记录）
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">FZS 的节奏：建链 → 追平 → 演练 → 配合割接 → 观察</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">FZS 的节奏：建链 → 追平 → 演练 → 上线配合 → 观察</div>
 ---
 layout: center
 class: text-center
