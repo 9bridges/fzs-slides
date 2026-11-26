@@ -274,33 +274,6 @@ layout: default
 layout: default
 ---
 
-# 操作对照：老 Web 界面 → 新 Web 控制台
-
-<p style="font-size: 0.82rem; color: var(--muted); margin: 0.2rem 0 0.9rem">同一套同步内核，操作层重构 —— 原来在系统配置、map、conf 文件、进程监控之间来回切换，现在收敛到对象与向导里</p>
-
-<style>
-.cmp-tb th, .cmp-tb td { padding: 0.62rem 0.9rem !important; }
-</style>
-
-<table class="cmp-tb" style="font-size: 0.96rem">
-<thead><tr><th style="width: 46%">老 Web 界面</th><th>新 Web 控制台</th></tr></thead>
-<tbody>
-<tr><td>系统配置里填<strong>源端 / 目标端 IP、端口、源端 id</strong></td><td>录一次<strong>数据节点</strong>，多条链路复用，无需重复填写连接信息</td></tr>
-<tr><td>配 <strong>map</strong>，再到「配置文件信息」里核对 conf</td><td><strong>同步对象</strong>页直接勾选用户 / 表 / 列，conf 由系统生成</td></tr>
-<tr><td>在系统级<strong>参数配置</strong>页调导出、装载参数</td><td>收敛到单条链路第 5 步<strong>其它配置</strong>，按目标端预填默认值</td></tr>
-<tr><td>到<strong>进程监控</strong>页逐个启动、停止、修复</td><td>链路<strong>启停 / 修复 / 重置</strong>一个入口，异常还能自愈与组内漂移</td></tr>
-</tbody>
-</table>
-
-<div class="mt-6 px-4 py-3" style="background: var(--brand-pale); font-size: 0.88rem; color: var(--muted)">
-<strong style="color: var(--brand)">参数一个没少：</strong>原来系统级的参数在新界面里都能对上——导出、装载、接收、分配、监控五类前缀参数，从「系统级」下沉到「单条链路」，并带默认值；节点与链路均可复制，无需逐条重复配置。
-</div>
-
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">概念对应：源端 / 目标端 → 数据节点 · map → 同步对象 · conf → 链路配置 · 进程 → 链路状态</div>
----
-layout: default
----
-
 # 链路实时监控
 
 <div class="flex gap-8 mt-3 items-start">
