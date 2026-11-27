@@ -555,9 +555,7 @@ layout: default
   - 实时性要求秒级（< 10 sec）
 - **所属案例：**
   - 金融街证券：OceanBase / DM -> SelectDB
-  - 山西证券：
-    - Oracle / MySQL -> Kafka
-    - GaussDB -> Oracle / Doris
+  - 山西证券：GaussDB -> Oracle / Doris
   - 财通证券：Oracle / MySQL / OceanBase -> Kafka / Doris
   - 中银国际证券：Oracle / GaussDB -> Kafka
   - 华安证券：TDSQL -> Kafka
