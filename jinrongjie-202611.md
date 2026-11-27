@@ -648,7 +648,7 @@ layout: default
   </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 恒生 UF 3.0 信创升级（1 / 3）</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 恒生 UF 3.0 信创升级（1 / 2）</div>
 
 ---
 
@@ -656,17 +656,32 @@ layout: default
 
 <div style="position:relative; border:1px dashed var(--border); padding:1.15rem .7rem .6rem; background:#faf8f6">
   <span style="position:absolute; top:.35rem; left:.8rem; font-size:.64rem; letter-spacing:.12em; color:var(--muted); font-weight:700">同机房（生产机房）</span>
-  <div style="display:flex; align-items:center; gap:.55rem">
+  <div style="display:flex; align-items:flex-end; gap:.55rem">
     <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.5rem .6rem">
       <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">源库</p>
       <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">GaussDB · UF 3.0 主<br/>OB Oracle · TA6<br/>MySQL · SEE</div>
     </div>
-    <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">读日志<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
-    <div style="flex:1.2; border:1px solid var(--brand); background:var(--surface); padding:.5rem .6rem">
-      <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">中间机（1 台）</p>
-      <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">Web Server ×1<br/>源端 Agent ×5<br/>目标端 Agent ×5</div>
+    <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem; margin-bottom:1.2rem">远程抽取<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
+    <div style="flex:1.8; border:1px solid var(--brand); background:var(--surface); padding:.5rem .6rem">
+      <p style="font-size:.7rem; font-weight:700; margin:0 0 .3rem; color:var(--brand); letter-spacing:.06em">中间机（1 台）</p>
+      <p style="font-size:.58rem; letter-spacing:.1em; color:var(--muted); margin:0 0 .15rem">控制组件</p>
+      <div style="border:1px solid var(--divider); background:var(--brand-pale); padding:.18rem .3rem; text-align:center; font-size:.64rem">Web 控制台</div>
+      <div style="text-align:center; color:var(--brand); font-size:.54rem; line-height:1.2; margin:.1rem 0">API<br/><span style="font-size:.72rem; font-weight:700">⇅</span></div>
+      <div style="border:1px solid var(--brand); background:var(--brand-pale); padding:.18rem .3rem; text-align:center; font-size:.64rem; font-weight:600">Web Server ×1</div>
+      <div style="text-align:center; color:var(--muted); font-size:.54rem; margin:.12rem 0 0">配置下发 / 状态回传</div>
+      <div style="display:flex; gap:.3rem; color:var(--brand); font-size:.72rem; line-height:1">
+        <div style="flex:1; text-align:center">⇅</div>
+        <div style="flex:1; text-align:center">⇅</div>
+      </div>
+      <p style="font-size:.58rem; letter-spacing:.1em; color:var(--muted); margin:.12rem 0 .15rem">数据组件</p>
+      <div style="display:flex; align-items:center; gap:.3rem">
+        <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.18rem .3rem; text-align:center; font-size:.64rem">源端 Agent</div>
+        <div style="text-align:center; color:var(--brand); font-size:.54rem; line-height:1.2">传输<br/><span style="font-size:.72rem; font-weight:700">→</span></div>
+        <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.18rem .3rem; text-align:center; font-size:.64rem">目标端 Agent</div>
+      </div>
+      <div style="text-align:center; color:var(--brand); font-size:.62rem; font-weight:600; margin-top:.18rem; letter-spacing:.06em">5 条链路</div>
     </div>
-    <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem">写入<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
+    <div style="text-align:center; color:var(--brand); font-size:.64rem; line-height:1.4; min-width:2.6rem; margin-bottom:1.2rem">远程装载<br/><span style="font-size:1.05rem; font-weight:700">→</span></div>
     <div style="flex:1; border:1px solid var(--divider); background:var(--surface); padding:.5rem .6rem">
       <p style="font-size:.7rem; font-weight:700; margin:0 0 .25rem; color:var(--brand); letter-spacing:.06em">目标库</p>
       <div style="font-size:.72rem; line-height:1.85; color:var(--fg)">GaussDB · UF 3.0 备<br/>Oracle · 当前 / 历史<br/>OB Oracle · TA6 备<br/>MySQL · SEE 备</div>
@@ -689,30 +704,20 @@ layout: default
   </div>
   <div style="border-top:2px solid var(--brand); padding-top:.45rem">
     <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">Agent 源 / 备同机</p>
-    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">每条链路源端、备端各 1 个 Agent，共 10 个</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">5 条链路，源端、备端各 1 个 Agent，共 10 个</p>
   </div>
   <div style="border-top:2px solid var(--brand); padding-top:.45rem">
     <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">全部同机房</p>
     <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">5 条链路不出机房，不占跨机房专线</p>
   </div>
   <div style="border-top:2px solid var(--brand); padding-top:.45rem">
-    <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">与库分离</p>
-    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">Agent 不落在数据库主机，负载与库互不影响</p>
+    <p style="font-size:.82rem; font-weight:600; margin:0 0 .15rem">0 侵入性</p>
+    <p style="font-size:.74rem; color:var(--muted); line-height:1.55; margin:0">Agent 不落在数据库主机，<span style="white-space:nowrap">远程抽取 / 装载</span>，不占库主机资源</p>
   </div>
 </div>
 
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 部署拓扑（2 / 3）</div>
+<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 部署拓扑（2 / 2）</div>
 
----
-layout: default
----
-
-# 山西证券 · UF30 信创 OTC 逻辑部署
-
-<p style="font-size: 0.72rem; color: var(--muted); margin: 0.35rem 0 0.6rem">微服务同城双活 · 数据库域名连接透明切换 · FZS 跨机房实时同步</p>
-<img src="/case-shanxi-arch.webp" alt="山西证券 UF30 信创 OTC 逻辑部署图" style="display: block; max-width: 100%; max-height: 360px; border: 1px solid var(--divider)" />
-
-<div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 微服务同城双活 · 数据库域名连接 · 全局负载均衡（3 / 3）</div>
 ---
 layout: default
 ---
@@ -730,10 +735,8 @@ layout: default
 <table class="sx-plan">
 <thead><tr><th style="width: 8rem">系统</th><th>源端 → 目标端</th></tr></thead>
 <tbody>
-<tr><td>TA6</td><td><span style="font-family: 'Fira Code', monospace">OceanBase → OceanBase</span></td></tr>
 <tr><td>宽途交易</td><td><span style="font-family: 'Fira Code', monospace">OceanBase → OceanBase</span></td></tr>
 <tr><td>网上营业厅</td><td><span style="font-family: 'Fira Code', monospace">OceanBase → OceanBase　/　TDSQL → TDSQL</span></td></tr>
-<tr><td>UF30</td><td><span style="font-family: 'Fira Code', monospace">MySQL → MySQL</span></td></tr>
 <tr><td>衡泰</td><td><span style="font-family: 'Fira Code', monospace">TDSQL-PG ↔ Oracle（两条单向）</span></td></tr>
 <tr><td>新意资金结算</td><td><span style="font-family: 'Fira Code', monospace">OceanBase / GaussDB 同构</span></td></tr>
 <tr><td>恒生 PB</td><td><span style="font-family: 'Fira Code', monospace">OceanBase / GoldenDB / GaussDB 同构</span></td></tr>
@@ -743,7 +746,7 @@ layout: default
 </tbody>
 </table>
 
-<p style="font-size: 0.84rem; color: var(--muted); margin: 0.7rem 0 0"><strong style="color: var(--brand)">10 个系统 · 12 条链路：</strong>覆盖 OceanBase / GaussDB / TDSQL / GoldenDB / MySQL　·　同构替换与异构回写并存　·　同一套 FZS 统一纳管</p>
+<p style="font-size: 0.84rem; color: var(--muted); margin: 0.7rem 0 0"><strong style="color: var(--brand)">8 个系统 · 10 条链路：</strong>覆盖 OceanBase / GaussDB / TDSQL / GoldenDB　·　同构替换与异构回写并存　·　同一套 FZS 统一纳管</p>
 
 <div style="margin: auto -3.5rem -2.5rem; padding: 0.6rem 3.5rem; background: var(--brand); color: oklch(97% 0.005 30); font-size: 0.78rem; font-family: 'Kaiti SC', STKaiti, 'KaiTi', serif; font-weight: 600">案例分享 · 山西证券 · 信创数据库替换规划</div>
 ---
@@ -819,7 +822,7 @@ layout: default
 <ul class="text-sm mt-2 space-y-2">
 <li>以<strong>信创库（OceanBase）为源</strong>，日志级增量捕获</li>
 <li>一源三目标：温备库、采集库、异地灾备</li>
-<li>源端只读日志，不侵入业务表</li>
+<li>增量读日志、全量读表，不侵入业务表</li>
 </ul>
 </div>
 <div>
